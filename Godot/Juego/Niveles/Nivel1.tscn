@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Juego/Plataformas/PlataformaLarga.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Objetos/ZanahoriaLlave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Recursos/Items/portal_orange.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Objetos/Panel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/Objetos/PortalFalso.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Recursos/Characters/pngwing.com.png" type="Texture" id=7]
+
+[node name="Nivel1" instance=ExtResource( 3 )]
+nivelActual = "res://Juego/Niveles/Nivel1.tscn"
+
+[node name="ZanahoriaLlave" parent="Zanahorias" index="0" instance=ExtResource( 2 )]
+position = Vector2( 66.5741, 855.69 )
+
+[node name="Portal2" parent="." index="1"]
+position = Vector2( 709.127, 841.481 )
+proximoNivel = "res://Juego/Niveles/Nivel2.tscn"
+
+[node name="PlataformaLarga" parent="PlataformasLargas" index="0" instance=ExtResource( 1 )]
+position = Vector2( 394.983, 934.499 )
+
+[node name="Personaje" parent="." index="8"]
+position = Vector2( 390.348, 896.18 )
+
+[node name="platformPack_tile007" parent="Items" index="0" instance=ExtResource( 5 )]
+position = Vector2( 389.227, 719.213 )
+scale = Vector2( 2, 2 )
+
+[node name="portal_orange" type="Sprite" parent="Items/platformPack_tile007" index="5"]
+modulate = Color( 0.521569, 0.513726, 0.513726, 1 )
+position = Vector2( -72.6292, -31.7997 )
+scale = Vector2( 0.172881, 0.691526 )
+texture = ExtResource( 4 )
+
+[node name="ZanahoriaLlave2" parent="Items" index="1" instance=ExtResource( 2 )]
+position = Vector2( 382.843, 658.801 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="Node" parent="Items" index="2" instance=ExtResource( 6 )]
+position = Vector2( 531.112, 656.326 )
+
+[node name="pngwingcom" type="Sprite" parent="Items" index="3"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 0.960784, 0, 0, 1 )
+position = Vector2( 314.56, 658.05 )
+scale = Vector2( 0.107188, 0.107188 )
+texture = ExtResource( 7 )
+flip_h = true
+
+[node name="pngwingcom2" type="Sprite" parent="Items" index="4"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 0.960784, 0, 0, 1 )
+position = Vector2( 452.522, 658.05 )
+scale = Vector2( 0.107188, 0.107188 )
+texture = ExtResource( 7 )
+flip_h = true

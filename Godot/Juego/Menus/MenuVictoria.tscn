@@ -1,0 +1,278 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Recursos/Background/bg_layer1.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Background/bg_layer4.png" type="Texture" id=2]
+[ext_resource path="res://Recursos/Background/bg_layer2.png" type="Texture" id=3]
+[ext_resource path="res://Recursos/Background/bg_layer3.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Menus/BotonBase.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Recursos/Environment/ground_grass.png" type="Texture" id=6]
+[ext_resource path="res://Recursos/Players/bunny1_stand.png" type="Texture" id=7]
+[ext_resource path="res://Juego/Menus/BotonSalir.gd" type="Script" id=8]
+[ext_resource path="res://Juego/Menus/MenuVictoria.gd" type="Script" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.743652, 0.643009, 0.351492, 1 )
+border_color = Color( 0.217522, 0.400879, 0.148764, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.290196, 0.541176, 0.196078, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.854902, 0.741176, 0.411765, 1 )
+border_width_bottom = 10
+border_color = Color( 0.764706, 0.666667, 0.392157, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Recursos/Fonts/Kenney Future Narrow.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.839355, 0.360661, 0.416323, 1 )
+border_color = Color( 0.61084, 0.61084, 0.257698, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.653809, 0.291149, 0.333319, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.913725, 0.407843, 0.466667, 1 )
+border_width_bottom = 13
+border_color = Color( 0.785645, 0.349857, 0.40053, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=9]
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Recursos/Fonts/Kenney Blocks.ttf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 50
+font_data = SubResource( 11 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 40
+font_data = SubResource( 11 )
+
+[node name="MenuVictoria" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_offset = Vector2( 0, -500 )
+
+[node name="ParallaxFondo" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 2048, 2048 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxFondo"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxNubes" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 2048, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxNubes"]
+margin_left = 11.9866
+margin_top = -527.404
+margin_right = 2059.99
+margin_bottom = 1520.6
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxNubesMedias" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 2048, 2048 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxNubesMedias"]
+margin_left = -59.9324
+margin_top = -761.14
+margin_right = 1988.07
+margin_bottom = 1286.86
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxCercanas" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 2048, 2048 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxCercanas"]
+margin_left = -131.028
+margin_top = -836.726
+margin_right = 1916.97
+margin_bottom = 1211.27
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 146.0
+margin_top = -188.0
+margin_right = 511.0
+margin_bottom = 138.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonMenuPrincipal" type="Button" parent="VBoxContainer" instance=ExtResource( 5 )]
+margin_right = 365.0
+margin_bottom = 153.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Menu Principal"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonSalir" type="Button" parent="VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 173.0
+margin_right = 365.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Salir"
+clip_text = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 618.0
+margin_top = 55.0
+margin_right = 1200.0
+margin_bottom = 159.0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -259.5
+margin_top = -38.0
+margin_right = 259.5
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.816406, 0.671543, 0.251938, 1 )
+text = "¡¡ Ganaste !!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel puntaje" type="Panel" parent="."]
+margin_left = 116.0
+margin_top = 563.0
+margin_right = 542.0
+margin_bottom = 645.0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Puntaje" type="Label" parent="Panel puntaje"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -259.5
+margin_top = -30.0
+margin_right = 259.5
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.816406, 0.671543, 0.251938, 1 )
+text = "Puntaje: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bunny1_stand" type="Sprite" parent="."]
+position = Vector2( 918.949, 349.713 )
+texture = ExtResource( 7 )
+
+[node name="ground_grass" type="Sprite" parent="."]
+position = Vector2( 909.801, 496.884 )
+texture = ExtResource( 6 )
+[connection signal="pressed" from="VBoxContainer/BotonMenuPrincipal" to="." method="_on_BotonMenuPrincipal_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotonSalir" to="VBoxContainer/BotonSalir" method="_on_pressed"]

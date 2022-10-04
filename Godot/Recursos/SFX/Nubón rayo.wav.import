@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Nubón rayo.wav-2c2791d9e332ba0b885c1296c7b2449a.sample"
+
+[deps]
+
+source_file="res://Recursos/SFX/Nubón rayo.wav"
+dest_files=[ "res://.import/Nubón rayo.wav-2c2791d9e332ba0b885c1296c7b2449a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

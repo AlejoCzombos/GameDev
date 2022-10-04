@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Objetos/Pinchos.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Objetos/MonedaPlata.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Objetos/MonedaBronce.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Plataformas/PlataformaArena.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Objetos/ZanahoriaLlave.tscn" type="PackedScene" id=7]
+
+[node name="Nivel2" instance=ExtResource( 1 )]
+nivelActual = "res://Juego/Niveles/Nivel2.tscn"
+
+[node name="ZanahoriaLlave" parent="Zanahorias" index="0" instance=ExtResource( 7 )]
+position = Vector2( -87.6653, 885.774 )
+
+[node name="ZanahoriaLlave2" parent="Zanahorias" index="1" instance=ExtResource( 7 )]
+position = Vector2( 701.299, 881.218 )
+
+[node name="Portal2" parent="." index="1"]
+position = Vector2( 1156.39, 941.546 )
+proximoNivel = "res://Juego/Niveles/Nivel3.tscn"
+
+[node name="MonedaPlata2" parent="Monedas" index="0" instance=ExtResource( 3 )]
+position = Vector2( 466.063, 553.491 )
+
+[node name="MonedaBronce" parent="Monedas" index="1" instance=ExtResource( 4 )]
+position = Vector2( 359.044, 692.799 )
+
+[node name="MonedaBronce3" parent="Monedas" index="2" instance=ExtResource( 4 )]
+position = Vector2( 404.004, 618.322 )
+
+[node name="MonedaBronce4" parent="Monedas" index="3" instance=ExtResource( 4 )]
+position = Vector2( 534.21, 619.444 )
+
+[node name="MonedaBronce2" parent="Monedas" index="4" instance=ExtResource( 4 )]
+position = Vector2( 583.724, 692.8 )
+
+[node name="PlataformaArena" parent="PlataformasNormales" index="0" instance=ExtResource( 6 )]
+position = Vector2( 179.921, 949.291 )
+
+[node name="PlataformaArena2" parent="PlataformasNormales" index="1" instance=ExtResource( 6 )]
+position = Vector2( 624.848, 949.791 )
+
+[node name="PlataformaArena4" parent="PlataformasNormales" index="2" instance=ExtResource( 6 )]
+position = Vector2( 1064.53, 1033.65 )
+
+[node name="PlataformaArena3" parent="PlataformasNormales" index="3" instance=ExtResource( 6 )]
+position = Vector2( -199.174, 949.791 )
+
+[node name="Personaje" parent="." index="8"]
+position = Vector2( -315.557, 921.675 )
+
+[node name="Pinchos" parent="Items" index="0" instance=ExtResource( 2 )]
+position = Vector2( 74.7745, 927.208 )

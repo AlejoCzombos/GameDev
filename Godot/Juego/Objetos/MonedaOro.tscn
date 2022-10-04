@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Juego/Objetos/Moneda.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Recursos/SFX/Moneda Especial.wav" type="AudioStream" id=2]
+
+[node name="MonedaOro" instance=ExtResource( 1 )]
+tipoMoneda = "oro"
+
+[node name="Consumir" parent="." index="2"]
+stream = ExtResource( 2 )

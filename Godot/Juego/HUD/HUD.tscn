@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Juego/HUD/ContenedorInfo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/HUD/ContenedorLlaves.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Recursos/Background/bg_layer1.png" type="Texture" id=3]
+[ext_resource path="res://Juego/HUD/ContenedorMonedaOro.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/HUD/ContenedorMonedaPlata.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/HUD/ContenedorMonedaBronce.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/HUD/HUD.gd" type="Script" id=7]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.68176
+margin_top = -2.3889
+margin_right = 1.68176
+margin_bottom = -2.38892
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 174.603, 107.764 ],
+"_edit_use_anchors_": false
+}
+
+[node name="ContenedorInfo" parent="." instance=ExtResource( 1 )]
+margin_left = 50.0
+margin_top = 46.0
+margin_right = 197.0
+margin_bottom = 102.0
+
+[node name="ContenedorLlaves" parent="." instance=ExtResource( 2 )]
+self_modulate = Color( 0.878431, 0.882353, 0.321569, 1 )
+margin_left = 50.0
+margin_top = 120.0
+margin_right = 197.0
+margin_bottom = 176.0
+texture = ExtResource( 3 )
+
+[node name="ContenedorMonedaOro" parent="." instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -170.0
+margin_top = 40.0
+margin_right = -51.0
+margin_bottom = 76.0
+
+[node name="ContenedorMonedaBronce" parent="." instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -170.0
+margin_top = 140.0
+margin_right = -51.0
+margin_bottom = 176.0
+
+[node name="ContenedorMonedaPlata" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -170.0
+margin_top = 90.0
+margin_right = -51.0
+margin_bottom = 126.0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Caida Plataforma.wav-edfb0fef17af1272a409eff69aad1319.sample"
+
+[deps]
+
+source_file="res://Recursos/SFX/Caida Plataforma.wav"
+dest_files=[ "res://.import/Caida Plataforma.wav-edfb0fef17af1272a409eff69aad1319.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
