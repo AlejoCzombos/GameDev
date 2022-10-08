@@ -8,6 +8,7 @@ export var estelaMaxima:int = 150
 onready var canion: Canion = $Canion
 onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
+onready var motorSFX:Motor = $MotorSFX
 
 var empuje:Vector2 = Vector2.ZERO
 var direccionRotacion:int = 0
@@ -29,8 +30,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_pressed("MoverAdelante"):
 		estela.set_max_points(estelaMaxima)
+		motorSFX.sonido_on()
 	elif Input.is_action_pressed("MoverAtras"):
 		estela.set_max_points(0)
+		motorSFX.sonido_on()
+	
+	if event.is_action_released("MoverAdelante") or event.is_action_released("MoverAtras"):
+		motorSFX.sonido_off()
 
 func player_input() -> void:
 	#Empuje
