@@ -10,18 +10,22 @@ onready var timerEnfriamiento: Timer = $TimerEnfriamiento
 onready var disparoSFX: AudioStreamPlayer2D = $Disparo
 onready var estaEnfriado:bool = true
 onready var estaDisparando:bool = false setget set_estaDisparando
+onready var puedeDisparar:bool = false setget set_puedeDisparar
 
 var puntosDisparo:Array = []
 
 func set_estaDisparando(disparando: bool) -> void:
 	estaDisparando = disparando
 
+func set_puedeDisparar(disparando: bool) -> void:
+	puedeDisparar = disparando
+
 func _ready() -> void:
 	almacenarPuntosDisparo()
 	timerEnfriamiento.wait_time = cadenciaDisparo
 
 func _process(_delta: float) -> void :
-	if estaDisparando && estaEnfriado:
+	if estaDisparando && estaEnfriado && puedeDisparar:
 		disparar()
 
 func almacenarPuntosDisparo() -> void:
