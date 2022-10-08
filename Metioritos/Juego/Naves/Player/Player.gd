@@ -3,9 +3,11 @@ extends RigidBody2D
 
 export var fuerzaMotor:int = 20
 export var fuerzaRotacion:int = 280
+export var estelaMaxima:int = 150
 
 onready var canion: Canion = $Canion
 onready var laser:RayoLaser = $LaserBeam2D
+onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 
 var empuje:Vector2 = Vector2.ZERO
 var direccionRotacion:int = 0
@@ -24,6 +26,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("Disparo Secundario"):
 		laser.set_is_casting(false)
+	
+	if Input.is_action_pressed("MoverAdelante"):
+		estela.set_max_points(estelaMaxima)
+	elif Input.is_action_pressed("MoverAtras"):
+		estela.set_max_points(0)
 
 func player_input() -> void:
 	#Empuje
