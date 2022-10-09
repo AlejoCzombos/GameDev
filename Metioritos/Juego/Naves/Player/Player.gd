@@ -85,6 +85,7 @@ func controladorEstado(nuevoEstado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puedeDisparar(true)
+			Eventos.emit_signal("naveDestruida", global_position, 3)
 			queue_free()
 		_:
 			printerr("Error estados")
@@ -99,3 +100,6 @@ func esta_input_activo() -> bool:
 func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
 	if anim_name == "spawn":
 		controladorEstado(ESTADO.VIVO)
+
+func destruir() -> void:
+	controladorEstado(ESTADO.MUERTO)
