@@ -6,12 +6,14 @@ enum ESTADO {SPAWN, VIVO, INVENCIBLE, MUERTO}
 export var fuerzaMotor:int = 20
 export var fuerzaRotacion:int = 280
 export var estelaMaxima:int = 150
-
+export var vida:float = 10.0
+ 
 onready var canion: Canion = $Canion
 onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motorSFX:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
+onready var ImpactoSFX: AudioStreamPlayer = $Impacto
 
 var estadoActual:int = ESTADO.SPAWN
 var empuje:Vector2 = Vector2.ZERO
@@ -96,6 +98,11 @@ func esta_input_activo() -> bool:
 		return false
 	return true
 
+func recibirDanio(danio:float):
+	vida -= danio
+	if vida <= 0.0:
+		controladorEstado(ESTADO.MUERTO)
+	ImpactoSFX.play()
 
 func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
 	if anim_name == "spawn":
