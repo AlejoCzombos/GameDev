@@ -14,6 +14,7 @@ onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motorSFX:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var ImpactoSFX: AudioStreamPlayer = $Impacto
+onready var Escudo: Escudo = $Escudo
 
 var estadoActual:int = ESTADO.SPAWN
 var empuje:Vector2 = Vector2.ZERO
@@ -49,6 +50,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("MoverAdelante") or event.is_action_released("MoverAtras"):
 		motorSFX.sonido_off()
+	
+	#Escudo
+	if Input.is_action_pressed("Escudo") && !Escudo.getEstaActivado():
+		Escudo.activar()
 
 func player_input() -> void:
 	if not esta_input_activo():
@@ -73,6 +78,8 @@ func player_input() -> void:
 		canion.set_estaDisparando(true)
 	if Input.is_action_just_released("Disparo Principal"):
 		canion.set_estaDisparando(false)
+	
+	
 
 func controladorEstado(nuevoEstado: int) -> void:
 	match nuevoEstado:
