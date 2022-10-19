@@ -24,7 +24,7 @@ func desactivar() -> void:
 	set_process(false)
 	estaActivado = false
 	$CollisionShape2D.set_deferred("disabled", true)
-	animaciones.play_backwards("AbrirEscudo")
+	animaciones.play("CerrarEscudo ")
 
 func activar() -> void:
 	if energia <= 0.0:
