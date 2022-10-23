@@ -8,6 +8,7 @@ onready var particulasMateorito:Node
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var particulaMeteorito:PackedScene = null
+export var destruccionMeteorito:PackedScene = null
 
 func _ready() -> void:
 	conectarSeniales()
@@ -18,6 +19,7 @@ func conectarSeniales() -> void:
 	Eventos.connect("naveDestruida", self, "_on_naveDestruida")
 	Eventos.connect("crearMeteorito", self, "_on_crearMeteorito")
 	Eventos.connect("particulasMeteorito", self, "_on_particulasMeteorito")
+	Eventos.connect("destruccionMeteorito", self, "_on_destruccionMeteorito")
 
 func crearContenedores() -> void:
 	contenedorProyectiles = Node.new()
@@ -50,3 +52,8 @@ func _on_particulasMeteorito(posicion: Vector2) -> void:
 	var new_MeteoritoParticulas: Node2D = particulaMeteorito.instance()
 	new_MeteoritoParticulas.global_position = posicion
 	particulasMateorito.add_child(new_MeteoritoParticulas)
+
+func _on_destruccionMeteorito(posicion: Vector2) -> void:
+	var new_destruccionMeteorito: Node2D = destruccionMeteorito.instance()
+	new_destruccionMeteorito.global_position = posicion
+	particulasMateorito.add_child(new_destruccionMeteorito)

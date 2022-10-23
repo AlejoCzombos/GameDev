@@ -117,3 +117,9 @@ func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
 
 func destruir() -> void:
 	controladorEstado(ESTADO.MUERTO)
+
+
+func _on_body_entered(body):
+	if body is Meteorito:
+		body.destruir()
+		destruir()

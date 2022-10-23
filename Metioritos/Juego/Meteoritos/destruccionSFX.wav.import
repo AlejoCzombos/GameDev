@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/destruccionSFX.wav-769f31da6a7c8ade79cf5a2b16fe031f.sample"
+
+[deps]
+
+source_file="res://Juego/Meteoritos/destruccionSFX.wav"
+dest_files=[ "res://.import/destruccionSFX.wav-769f31da6a7c8ade79cf5a2b16fe031f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
