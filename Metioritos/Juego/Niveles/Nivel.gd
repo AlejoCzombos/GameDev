@@ -3,12 +3,14 @@ extends Node
 
 onready var contenedorProyectiles:Node
 onready var contenedorMeteoritos:Node
+onready var contenedorSectoresMeteorito:Node
 onready var particulasMateorito:Node
 
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var particulaMeteorito:PackedScene = null
 export var destruccionMeteorito:PackedScene = null
+export var SectorMeteoritos:PackedScene = null
 
 func _ready() -> void:
 	conectarSeniales()
@@ -17,6 +19,7 @@ func _ready() -> void:
 func conectarSeniales() -> void:
 	Eventos.connect("disparo", self, "_on_disparo")
 	Eventos.connect("naveDestruida", self, "_on_naveDestruida")
+	Eventos.connect("naveEnSectorPeligro", self, "_on_naveEnSectorPeligro")
 	Eventos.connect("crearMeteorito", self, "_on_crearMeteorito")
 	Eventos.connect("particulasMeteorito", self, "_on_particulasMeteorito")
 	Eventos.connect("destruccionMeteorito", self, "_on_destruccionMeteorito")
@@ -31,7 +34,9 @@ func crearContenedores() -> void:
 	particulasMateorito = Node.new()
 	particulasMateorito.name = "ContenedorMeteoritos"
 	add_child(particulasMateorito)
-	
+	contenedorSectoresMeteorito = Node.new()
+	contenedorSectoresMeteorito.name = "contenedorSectoresMeteorito"
+	add_child(contenedorSectoresMeteorito)
 
 func _on_disparo(proyectil:Proyectil) -> void:
 	add_child(proyectil)
@@ -57,3 +62,14 @@ func _on_destruccionMeteorito(posicion: Vector2) -> void:
 	var new_destruccionMeteorito: Node2D = destruccionMeteorito.instance()
 	new_destruccionMeteorito.global_position = posicion
 	particulasMateorito.add_child(new_destruccionMeteorito)
+
+func _on_naveEnSectorPeligro(centroCam: Vector2, tipoPeligro: String, numeroPeligros: int) -> void:
+	if tipoPeligro == "Meteorito":
+		crearSectorMeteoritos(centroCam, numeroPeligros)
+	elif tipoPeligro == "Enemigo":
+		pass
+
+func crearSectorMeteoritos(centroCamara: Vector2, numeroPeligros: int) -> void:
+	var new_SectorMeteoritos:Node2D = SectorMeteoritos.instance()
+	new_SectorMeteoritos.global_position = centroCamara
+	contenedorSectoresMeteorito.add_child(new_SectorMeteoritos)

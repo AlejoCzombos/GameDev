@@ -293,6 +293,8 @@ bus = "SFX"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Advertencia"
 anims/Advertencia = SubResource( 8 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
 [connection signal="body_entered" from="DetectorFueraZona/detector" to="." method="_on_body_entered"]
 [connection signal="body_entered" from="DetectorFueraZona/Area2D2" to="." method="_on_body_entered"]
 [connection signal="body_entered" from="DetectorFueraZona/Area2D3" to="." method="_on_body_entered"]

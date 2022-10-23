@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/Laser/Laser.gd"
 }, {
+"base": "Area2D",
+"class": "SectorDePeligro",
+"language": "GDScript",
+"path": "res://Juego/Peligros/SectorDePeligro.gd"
+}, {
 "base": "Node2D",
 "class": "SectorMeteoritos",
 "language": "GDScript",
@@ -74,6 +79,7 @@ _global_script_class_icons={
 "Player": "",
 "Proyectil": "",
 "RayoLaser": "",
+"SectorDePeligro": "",
 "SectorMeteoritos": "",
 "meteoritosSpawner": ""
 }
