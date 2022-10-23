@@ -6,9 +6,9 @@
 [ext_resource path="res://Juego/Explosion/Explosion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Naves/Enemigos/EnemigoDummy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Juego/Meteoritos/MeteoritosSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Sistemas de particulas/ExplosionMeteoritoPart.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Sistemas de particulas/DestruccionMetPart.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=10]
 
 [node name="LevelTest" type="Node"]
 script = ExtResource( 2 )
@@ -18,7 +18,10 @@ particulaMeteorito = ExtResource( 8 )
 destruccionMeteorito = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 489.472, 322.077 )
+position = Vector2( -13.3753, -2.38907 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -27,14 +30,4 @@ environment = ExtResource( 3 )
 position = Vector2( 981.721, 831.758 )
 rotation = -1.5708
 
-[node name="MeteoritosSpawner" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1697.06, 152.735 )
-
-[node name="MeteoritosSpawner2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1467.95, 859.842 )
-
-[node name="MeteoritosSpawner3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 413.92, 840.793 )
-
-[node name="MeteoritosSpawner4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 813.945, 237.581 )
+[node name="SectorMeteoritos" parent="." instance=ExtResource( 10 )]

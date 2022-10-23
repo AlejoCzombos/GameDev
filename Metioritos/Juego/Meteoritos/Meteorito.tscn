@@ -77,6 +77,7 @@ tracks/2/keys = {
 collision_layer = 4
 collision_mask = 31
 physics_material_override = SubResource( 1 )
+gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="Particles2D" parent="." instance=ExtResource( 4 )]
