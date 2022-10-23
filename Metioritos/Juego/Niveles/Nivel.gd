@@ -3,9 +3,11 @@ extends Node
 
 onready var contenedorProyectiles:Node
 onready var contenedorMeteoritos:Node
+onready var particulasMateorito:Node
 
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
+export var particulaMeteorito:PackedScene = null
 
 func _ready() -> void:
 	conectarSeniales()
@@ -15,6 +17,7 @@ func conectarSeniales() -> void:
 	Eventos.connect("disparo", self, "_on_disparo")
 	Eventos.connect("naveDestruida", self, "_on_naveDestruida")
 	Eventos.connect("crearMeteorito", self, "_on_crearMeteorito")
+	Eventos.connect("particulasMeteorito", self, "_on_particulasMeteorito")
 
 func crearContenedores() -> void:
 	contenedorProyectiles = Node.new()
@@ -23,6 +26,10 @@ func crearContenedores() -> void:
 	contenedorMeteoritos = Node.new()
 	contenedorMeteoritos.name = "ContenedorMeteoritos"
 	add_child(contenedorMeteoritos)
+	particulasMateorito = Node.new()
+	particulasMateorito.name = "ContenedorMeteoritos"
+	add_child(particulasMateorito)
+	
 
 func _on_disparo(proyectil:Proyectil) -> void:
 	add_child(proyectil)
@@ -38,3 +45,8 @@ func _on_naveDestruida(posicion: Vector2, num_explosiones:int) -> void:
 		new_explosion.global_position = posicion
 		add_child(new_explosion)
 		yield(get_tree().create_timer(0.6),"timeout")
+
+func _on_particulasMeteorito(posicion: Vector2) -> void:
+	var new_MeteoritoParticulas: Node2D = particulaMeteorito.instance()
+	new_MeteoritoParticulas.global_position = posicion
+	particulasMateorito.add_child(new_MeteoritoParticulas)

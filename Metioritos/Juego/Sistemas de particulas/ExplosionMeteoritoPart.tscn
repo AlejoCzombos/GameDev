@@ -3,3 +3,6 @@
 [ext_resource path="res://Juego/Sistemas de particulas/ExplosionParticulas.tscn" type="PackedScene" id=1]
 
 [node name="ExplosionMeteoritoPart" instance=ExtResource( 1 )]
+z_as_relative = false
+emitting = true
+one_shot = false

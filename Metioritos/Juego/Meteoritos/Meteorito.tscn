@@ -1,55 +1,34 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Juego/Meteoritos/Meteorito.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Meteoritos/Meteorito.gd" type="Script" id=2]
 [ext_resource path="res://Juego/Meteoritos/ImpactoSFX.wav" type="AudioStream" id=3]
-[ext_resource path="res://Juego/Meteoritos/MiniMeteorito.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Sistemas de particulas/ExplosionParticulas.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
 rough = true
 bounce = 0.1
 
-[sub_resource type="Curve" id=3]
-min_value = -360.0
-max_value = 360.0
-_data = [ Vector2( 0.0275862, 360 ), 0.0, 0.0, 0, 0, Vector2( 1, -360 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="Gradient" id=5]
-offsets = PoolRealArray( 0.0245902, 0.704918 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.649902, 0.637209, 0.637209, 1 )
-
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
-
-[sub_resource type="Curve" id=7]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.993103, 0 ), -0.556664, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
-
-[sub_resource type="ParticlesMaterial" id=9]
-emission_shape = 1
-emission_sphere_radius = 80.0
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 1000.0
-initial_velocity_random = 0.4
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle_random = 1.0
-angle_curve = SubResource( 4 )
-scale = 4.0
-scale_random = 0.7
-scale_curve = SubResource( 8 )
-color_ramp = SubResource( 6 )
-
 [sub_resource type="CircleShape2D" id=2]
 radius = 36.6535
+
+[sub_resource type="Animation" id=3]
+resource_name = "Impacto"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.564706, 0.564706, 0.564706, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Meteorito" type="RigidBody2D"]
 collision_layer = 4
@@ -57,15 +36,7 @@ collision_mask = 31
 physics_material_override = SubResource( 1 )
 script = ExtResource( 2 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
-scale = Vector2( 0.2, 0.2 )
-emitting = false
-amount = 10
-lifetime = 2.0
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource( 9 )
-texture = ExtResource( 4 )
+[node name="Particles2D" parent="." instance=ExtResource( 4 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -78,3 +49,6 @@ stream = ExtResource( 3 )
 volume_db = -11.556
 attenuation = 2.73208
 bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Impacto = SubResource( 3 )

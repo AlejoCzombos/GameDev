@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -7,11 +7,13 @@
 [ext_resource path="res://Juego/Naves/Enemigos/EnemigoDummy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Meteoritos/MeteoritosSpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Juego/Sistemas de particulas/ExplosionMeteoritoPart.tscn" type="PackedScene" id=8]
 
 [node name="LevelTest" type="Node"]
 script = ExtResource( 2 )
 explosion = ExtResource( 4 )
 meteorito = ExtResource( 6 )
+particulaMeteorito = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 489.472, 322.077 )
