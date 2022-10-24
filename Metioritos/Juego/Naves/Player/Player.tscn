@@ -41,6 +41,7 @@ can_sleep = false
 linear_damp = 1.0
 angular_damp = 5.0
 script = ExtResource( 2 )
+fuerzaRotacion = 200
 
 [node name="Canion" parent="." instance=ExtResource( 4 )]
 
@@ -68,6 +69,7 @@ position = Vector2( 1.68368, -7.62939e-06 )
 points = PoolVector2Array( 0, 0, 60, 0 )
 width = 50.0
 is_emitting = true
+resolution = 5.0
 lifetime = 0.6
 max_points = 150
 target_path = NodePath("..")
@@ -84,6 +86,9 @@ volume_db = -7.068
 bus = "SFX"
 
 [node name="Escudo" parent="." instance=ExtResource( 9 )]
+
+[node name="CamaraPlayer" type="Camera2D" parent="."]
+current = true
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

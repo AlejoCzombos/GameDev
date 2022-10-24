@@ -5,7 +5,9 @@ onready var contenedorProyectiles:Node
 onready var contenedorMeteoritos:Node
 onready var contenedorSectoresMeteorito:Node
 onready var particulasMateorito:Node
+onready var camaraNivel:Camera2D = $CameraNivel
 
+export var tiempoTransicionCamara: float = 1.4
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var particulaMeteorito:PackedScene = null
@@ -71,5 +73,13 @@ func _on_naveEnSectorPeligro(centroCam: Vector2, tipoPeligro: String, numeroPeli
 
 func crearSectorMeteoritos(centroCamara: Vector2, numeroPeligros: int) -> void:
 	var new_SectorMeteoritos:Node2D = SectorMeteoritos.instance()
-	new_SectorMeteoritos.global_position = centroCamara
+	new_SectorMeteoritos.crear(centroCamara, numeroPeligros)
+	camaraNivel.global_position = centroCamara
 	contenedorSectoresMeteorito.add_child(new_SectorMeteoritos)
+	transicionCamara($Player/CamaraPlayer.global_position, camaraNivel.global_position, camaraNivel)
+	
+
+func transicionCamara(desde: Vector2, hasta: Vector2, camaraActual: Camera2D) -> void:
+	$TweenCamara.interpolate_property(camaraActual, "global_position", desde, hasta, tiempoTransicionCamara, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	camaraActual.current = true
+	$TweenCamara.start()

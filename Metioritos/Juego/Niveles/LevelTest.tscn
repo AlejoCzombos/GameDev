@@ -22,18 +22,20 @@ SectorMeteoritos = ExtResource( 10 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -13.3753, -2.38907 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
 [node name="EnemigoDummy3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 981.721, 831.758 )
-rotation = -1.5708
+position = Vector2( 750.545, 288.691 )
+rotation = -3.41386
 
 [node name="TrigguerLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TrigguerLluviaMeteoritos" instance=ExtResource( 7 )]
 position = Vector2( 1076.02, -11.3265 )
 tipoPeligro = "Meteorito"
+numeroPeligros = 5
+
+[node name="CameraNivel" type="Camera2D" parent="."]
+
+[node name="TweenCamara" type="Tween" parent="."]

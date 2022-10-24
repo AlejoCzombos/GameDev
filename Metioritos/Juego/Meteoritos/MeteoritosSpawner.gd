@@ -6,7 +6,6 @@ export var rangoTamanioMeteoritos: Vector2 = Vector2(0.6, 2.5)
 
 func _ready() -> void:
 	yield(owner, "ready")
-	spawnearMeteorito()
 
 func spawnearMeteorito() -> void:
 	Eventos.emit_signal("crearMeteorito", global_position, direccion, tamanioMeteoritoAleatorio())

@@ -4,12 +4,14 @@ extends RigidBody2D
 onready var ImpactoSFX:AudioStreamPlayer2D = $ImpactoSFX
 onready var DestruccionSFX:AudioStreamPlayer2D = $DestruccionSFX
 onready var Animacion:AnimationPlayer = $AnimationPlayer
+onready var TimerParticulas:Timer = $Timer
 
 export var velocidadLinealBase:Vector2 = Vector2(300.0, 300.0)
 export var velocidadAngularBase:float = 3.0
 export var hitpointsBase:float = 10.0
 
 var hitpoints:float
+var puedeReproducirse:bool = true
 var estaDentro:bool = true setget set_estaDentro
 var velocidadSpawnOriginal:Vector2
 var posicionOriginal:Vector2
@@ -49,15 +51,17 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	estaDentro = true
 
 func recibirDanio(danio:float) -> void:
-	Eventos.emit_signal("particulasMeteorito", global_position)
-	Animacion.play("Impacto")
 	hitpoints -= danio
 	if hitpoints <= 0.0:
 		Animacion.play("destruccion")
 		Eventos.emit_signal("destruccionMeteorito", global_position)
 		$CollisionShape2D.set_deferred("disabled", true)
 		return
-	ImpactoSFX.play()
+	elif puedeReproducirse:
+		Eventos.emit_signal("particulasMeteorito", global_position)
+		Animacion.play("Impacto")
+		puedeReproducirse = false
+		ImpactoSFX.play()
 
 func destruir() -> void:
 	Animacion.play("destruccion")
@@ -67,3 +71,6 @@ func destruir() -> void:
 func randomizar() -> float:
 	randomize()
 	return rand_range(1.1,1.4)
+
+func _on_Timer_timeout():
+	puedeReproducirse = true
