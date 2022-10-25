@@ -12,6 +12,7 @@ export var hitpointsBase:float = 10.0
 
 var hitpoints:float
 var puedeReproducirse:bool = true
+var estaDestruido:bool = false
 var estaDentro:bool = true setget set_estaDentro
 var velocidadSpawnOriginal:Vector2
 var posicionOriginal:Vector2
@@ -52,10 +53,9 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 
 func recibirDanio(danio:float) -> void:
 	hitpoints -= danio
-	if hitpoints <= 0.0:
-		Animacion.play("destruccion")
-		Eventos.emit_signal("destruccionMeteorito", global_position)
-		$CollisionShape2D.set_deferred("disabled", true)
+	if hitpoints <= 0.0 && !estaDestruido:
+		estaDestruido = true
+		destruir()
 		return
 	elif puedeReproducirse:
 		Eventos.emit_signal("particulasMeteorito", global_position)
