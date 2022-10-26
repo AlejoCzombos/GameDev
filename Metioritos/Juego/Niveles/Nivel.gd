@@ -43,6 +43,12 @@ func crearContenedores() -> void:
 	contenedorSectoresMeteorito.name = "contenedorSectoresMeteorito"
 	add_child(contenedorSectoresMeteorito)
 
+func crearPosicionAleatorea(rangoHorizontal:float, rangoVertical: float) -> Vector2:
+	randomize()
+	var randX = rand_range(-rangoHorizontal, rangoHorizontal)
+	var randY = rand_range(-rangoVertical, rangoVertical)
+	return Vector2(randX, randY)
+
 func _on_disparo(proyectil:Proyectil) -> void:
 	add_child(proyectil)
 
@@ -51,10 +57,13 @@ func _on_crearMeteorito(posicionSpawn:Vector2, direccionMeteorito: Vector2, tama
 	new_meteorito.crear(posicionSpawn, direccionMeteorito, tamanio)
 	contenedorMeteoritos.add_child(new_meteorito)
 
-func _on_naveDestruida(posicion: Vector2, num_explosiones:int) -> void:
+func _on_naveDestruida(nave:Player, posicion: Vector2, num_explosiones:int) -> void:
+	if nave is Player:
+		transicionCamara(posicion, posicion + crearPosicionAleatorea(-200.0, 200.0), camaraNivel, tiempoTransicionCamara)
+	
 	for _i in range(num_explosiones):
 		var new_explosion:Node2D = explosion.instance()
-		new_explosion.global_position = posicion
+		new_explosion.global_position = posicion + crearPosicionAleatorea(-200, 200)
 		add_child(new_explosion)
 		yield(get_tree().create_timer(0.6),"timeout")
 

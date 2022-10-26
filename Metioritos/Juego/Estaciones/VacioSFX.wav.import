@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/VacioSFX.wav-691583e32337c20cc79472a9bc439742.sample"
+
+[deps]
+
+source_file="res://Juego/Estaciones/VacioSFX.wav"
+dest_files=[ "res://.import/VacioSFX.wav-691583e32337c20cc79472a9bc439742.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

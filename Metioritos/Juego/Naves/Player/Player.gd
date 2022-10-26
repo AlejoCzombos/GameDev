@@ -99,8 +99,8 @@ func controladorEstado(nuevoEstado: int) -> void:
 			colisionador.set_deferred("disabled", true)
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
-			canion.set_puedeDisparar(true)
-			Eventos.emit_signal("naveDestruida", global_position, 3)
+			canion.set_puedeDisparar(false)
+			Eventos.emit_signal("naveDestruida", self, global_position, 3)
 			queue_free()
 		_:
 			printerr("Error estados")

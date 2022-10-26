@@ -23,9 +23,6 @@ SectorMeteoritos = ExtResource( 10 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -13.3753, -2.38907 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 3 )
-
 [node name="TrigguerLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TrigguerLluviaMeteoritos" instance=ExtResource( 7 )]
@@ -33,10 +30,12 @@ position = Vector2( 1076.02, -11.3265 )
 tipoPeligro = "Meteorito"
 numeroPeligros = 5
 
-[node name="TweenCamara" type="Tween" parent="."]
+[node name="EstacionesRecarga" type="Node" parent="."]
 
-[node name="EstacionRecarga" parent="." instance=ExtResource( 12 )]
+[node name="EstacionRecarga" parent="EstacionesRecarga" instance=ExtResource( 12 )]
 position = Vector2( 540.326, 313.601 )
+
+[node name="TweenCamara" type="Tween" parent="."]
 
 [node name="CameraNivel" type="Camera2D" parent="."]
 script = ExtResource( 5 )
@@ -44,4 +43,7 @@ script = ExtResource( 5 )
 [node name="TweenZoom" type="Tween" parent="CameraNivel"]
 playback_speed = 1.01
 playback/speed = 1.01
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CameraNivel"]
+environment = ExtResource( 3 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
