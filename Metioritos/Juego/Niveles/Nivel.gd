@@ -6,6 +6,7 @@ onready var contenedorMeteoritos:Node
 onready var contenedorSectoresMeteorito:Node
 onready var particulasMateorito:Node
 onready var camaraNivel:Camera2D = $CameraNivel
+onready var camaraPlayer:Camera2D = $Player/CamaraPlayer
 
 export var tiempoTransicionCamara: float = 1.4
 export var explosion:PackedScene = null
@@ -76,12 +77,14 @@ func _on_naveEnSectorPeligro(centroCam: Vector2, tipoPeligro: String, numeroPeli
 		pass
 
 func crearSectorMeteoritos(centroCamara: Vector2, numeroPeligros: int) -> void:
+	numeroTotalMeteoritos = numeroPeligros
 	var new_SectorMeteoritos:Node2D = SectorMeteoritos.instance()
 	new_SectorMeteoritos.crear(centroCamara, numeroPeligros)
 	camaraNivel.global_position = centroCamara
 	contenedorSectoresMeteorito.add_child(new_SectorMeteoritos)
-	transicionCamara($Player/CamaraPlayer.global_position, camaraNivel.global_position, camaraNivel, tiempoTransicionCamara)
-	numeroTotalMeteoritos = numeroPeligros
+	camaraNivel.zoom = camaraPlayer.zoom
+	camaraNivel.devolverZoomOriginal()
+	transicionCamara(camaraPlayer.global_position, camaraNivel.global_position, camaraNivel, tiempoTransicionCamara)
 
 func transicionCamara(desde: Vector2, hasta: Vector2, camaraActual: Camera2D, tiempoTransicion: float) -> void:
 	$TweenCamara.interpolate_property(camaraActual, "global_position", desde, hasta, tiempoTransicion , Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -90,12 +93,14 @@ func transicionCamara(desde: Vector2, hasta: Vector2, camaraActual: Camera2D, ti
 
 func descontarMeteoritos() -> void:
 	numeroTotalMeteoritos -= 1
-	print(numeroTotalMeteoritos)
 	if numeroTotalMeteoritos <= 0:
 		contenedorSectoresMeteorito.get_child(0).queue_free();
-		transicionCamara(camaraNivel.global_position, $Player/CamaraPlayer.global_position, $Player/CamaraPlayer, tiempoTransicionCamara * 0.10)
+		camaraPlayer.set_puedeHacerseZoom(true)
+		var zoomActual = camaraPlayer.zoom
+		camaraPlayer.zoom = camaraNivel.zoom
+		camaraPlayer.zoomSuavizado(zoomActual.x, zoomActual.y, 1.0)
+		transicionCamara(camaraNivel.global_position, camaraPlayer.global_position, camaraPlayer, tiempoTransicionCamara * 0.10)
 
-
-func _on_TweenCamara_tween_completed(object, key) -> void:
+func _on_TweenCamara_tween_completed(object, _key) -> void:
 	if object.name == "CamaraPlayer":
 		 object.global_position = $Player.global_position
