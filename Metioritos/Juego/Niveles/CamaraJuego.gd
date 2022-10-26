@@ -26,5 +26,3 @@ func zoomSuavizado(nuevoZoomX: float, nuevoZoomY: float, tiempoTransicion: float
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT)
 	tweenZoom.start()
-
-

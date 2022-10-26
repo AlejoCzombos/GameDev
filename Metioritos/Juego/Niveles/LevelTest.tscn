@@ -4,12 +4,12 @@
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://Juego/Explosion/Explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=5]
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Sistemas de particulas/ExplosionMeteoritoPart.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Sistemas de particulas/DestruccionMetPart.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=12]
 
 [node name="LevelTest" type="Node"]
@@ -33,13 +33,15 @@ position = Vector2( 1076.02, -11.3265 )
 tipoPeligro = "Meteorito"
 numeroPeligros = 5
 
-[node name="CameraNivel" type="Camera2D" parent="."]
-script = ExtResource( 11 )
-
-[node name="TweenZoom" type="Tween" parent="CameraNivel"]
-
 [node name="TweenCamara" type="Tween" parent="."]
 
 [node name="EstacionRecarga" parent="." instance=ExtResource( 12 )]
 position = Vector2( 540.326, 313.601 )
+
+[node name="CameraNivel" type="Camera2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="TweenZoom" type="Tween" parent="CameraNivel"]
+playback_speed = 1.01
+playback/speed = 1.01
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
