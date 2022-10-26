@@ -9,16 +9,22 @@ export var estelaMaxima:int = 150
 export var vida:float = 10.0
  
 onready var canion: Canion = $Canion
-onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motorSFX:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var ImpactoSFX: AudioStreamPlayer = $Impacto
-onready var Escudo: Escudo = $Escudo
+onready var laser:RayoLaser = $LaserBeam2D setget, getLaser
+onready var escudo: Escudo = $Escudo setget, getEscudo
 
 var estadoActual:int = ESTADO.SPAWN
 var empuje:Vector2 = Vector2.ZERO
 var direccionRotacion:int = 0
+
+func getLaser() -> RayoLaser:
+	return laser
+
+func getEscudo() -> Escudo:
+	return escudo
 
 func _ready() -> void:
 	pass
@@ -52,8 +58,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		motorSFX.sonido_off()
 	
 	#Escudo
-	if Input.is_action_pressed("Escudo") && !Escudo.getEstaActivado():
-		Escudo.activar()
+	if Input.is_action_pressed("Escudo") && !escudo.getEstaActivado():
+		escudo.activar()
 
 func player_input() -> void:
 	if not esta_input_activo():

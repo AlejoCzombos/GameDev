@@ -4,13 +4,13 @@
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://Juego/Explosion/Explosion.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Juego/Naves/Enemigos/EnemigoDummy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Sistemas de particulas/ExplosionMeteoritoPart.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Sistemas de particulas/DestruccionMetPart.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=12]
 
 [node name="LevelTest" type="Node"]
 script = ExtResource( 2 )
@@ -26,10 +26,6 @@ position = Vector2( -13.3753, -2.38907 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
-[node name="EnemigoDummy3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 750.545, 288.691 )
-rotation = -3.41386
-
 [node name="TrigguerLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TrigguerLluviaMeteoritos" instance=ExtResource( 7 )]
@@ -43,4 +39,7 @@ script = ExtResource( 11 )
 [node name="TweenZoom" type="Tween" parent="CameraNivel"]
 
 [node name="TweenCamara" type="Tween" parent="."]
+
+[node name="EstacionRecarga" parent="." instance=ExtResource( 12 )]
+position = Vector2( 540.326, 313.601 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
