@@ -27,9 +27,29 @@ func controladorEstado(nuevoEstado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puedeDisparar(false)
-			Eventos.emit_signal("naveDestruida", self, global_position, 3)
+			senialDestruccion()
 			queue_free()
 		_:
 			printerr("Error estados")
 	estadoActual = nuevoEstado
 
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "spawn":
+		controladorEstado(ESTADO.VIVO)
+
+func senialDestruccion() -> void:
+	Eventos.emit_signal("naveDestruida", self, global_position, 3)
+
+func recibirDanio(danio:float):
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		controladorEstado(ESTADO.MUERTO)
+	ImpactoSFX.play()
+
+func _on_body_entered(body):
+	if body is Meteorito:
+		body.destruir()
+		destruir()
+
+func destruir() -> void:
+	controladorEstado(ESTADO.MUERTO)

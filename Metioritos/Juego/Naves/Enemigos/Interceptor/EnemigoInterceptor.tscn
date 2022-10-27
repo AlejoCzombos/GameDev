@@ -1,0 +1,219 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/EnemigoInterceptor.gd" type="Script" id=1]
+[ext_resource path="res://Juego/Naves/Enemigos/EnemigoBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/EnemigoInterceptor.png" type="Texture" id=3]
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/SpriteSpawn.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/SpriteSpawn2.png" type="Texture" id=5]
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/SpawnSFX.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Juego/Proyectiles/ProyectilEnemigo.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 55.4131, 63.4051 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteSpawn:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteSpawn:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteSpawn2:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpriteSpawn2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 3.5, 3.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpriteSpawn2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SpriteSpawn:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("SpriteSpawn:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.862745 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("SpriteSpawn2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.862745 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("SpawnSFX:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 331.386
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 739.346
+
+[node name="EnemigoInterceptor" instance=ExtResource( 2 )]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource( 1 )
+hitpoints = 10.0
+
+[node name="Sprite" parent="." index="0"]
+rotation = -1.5708
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Canion" parent="." index="2"]
+proyectil = ExtResource( 7 )
+cadenciaDisparo = 1.2
+velocidadProyectil = 1200
+
+[node name="PuntoDerecho" parent="Canion" index="2"]
+position = Vector2( 50, 27 )
+
+[node name="PuntoIzquierdo" parent="Canion" index="3"]
+position = Vector2( 50, -27 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+autoplay = "spawn"
+anims/spawn = SubResource( 4 )
+
+[node name="SpriteSpawn" type="Sprite" parent="." index="5"]
+visible = false
+modulate = Color( 1, 1, 1, 0.862745 )
+rotation = 3.14159
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="SpriteSpawn2" type="Sprite" parent="." index="6"]
+visible = false
+rotation = 3.14159
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 4 )
+
+[node name="AreaDisparo" type="Area2D" parent="." index="7"]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDisparo" index="0"]
+shape = SubResource( 2 )
+
+[node name="AreaDeteccion" type="Area2D" parent="." index="8"]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
+shape = SubResource( 3 )
+
+[node name="SpawnSFX" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = ExtResource( 6 )
+volume_db = -8.078
+pitch_scale = 0.9
+attenuation = 0.45
+bus = "SFX"
+
+[editable path="Canion"]

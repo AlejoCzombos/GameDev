@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Nave.gd" type="Script" id=2]
 [ext_resource path="res://Juego/Naves/Player/MaterialFisico.tres" type="PhysicsMaterial" id=3]
 [ext_resource path="res://Juego/Proyectiles/Canion.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "spawn"
 
 [node name="NaveBase" type="RigidBody2D"]
 collision_layer = 0
@@ -18,7 +21,6 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
-scale = Vector2( 1e-05, 1e-05 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -34,6 +36,10 @@ position = Vector2( 0, -40 )
 [node name="ImpactoSFX" type="AudioStreamPlayer" parent="."]
 volume_db = -7.068
 bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spawn = SubResource( 1 )
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Canion"]

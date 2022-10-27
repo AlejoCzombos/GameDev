@@ -63,7 +63,7 @@ func _on_naveDestruida(nave:Player, posicion: Vector2, num_explosiones:int) -> v
 	
 	for _i in range(num_explosiones):
 		var new_explosion:Node2D = explosion.instance()
-		new_explosion.global_position = posicion + crearPosicionAleatorea(-200, 200)
+		new_explosion.global_position = posicion + crearPosicionAleatorea(-100, 100)
 		add_child(new_explosion)
 		yield(get_tree().create_timer(0.6),"timeout")
 

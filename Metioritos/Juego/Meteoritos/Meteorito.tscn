@@ -90,8 +90,9 @@ shape = SubResource( 2 )
 
 [node name="ImpactoSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
-attenuation = 2.73208
+volume_db = -10.467
+pitch_scale = 2.21
+attenuation = 3.03143
 bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -101,6 +102,7 @@ anims/destruccion = SubResource( 4 )
 [node name="DestruccionSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 volume_db = -12.0
+pitch_scale = 0.7
 attenuation = 3.24901
 bus = "SFX"
 
