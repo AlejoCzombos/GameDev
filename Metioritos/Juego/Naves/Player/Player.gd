@@ -1,22 +1,15 @@
 class_name Player
-extends RigidBody2D
-
-enum ESTADO {SPAWN, VIVO, INVENCIBLE, MUERTO}
+extends Nave
 
 export var fuerzaMotor:int = 20
 export var fuerzaRotacion:int = 280
 export var estelaMaxima:int = 150
-export var vida:float = 10.0
- 
-onready var canion: Canion = $Canion
+
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motorSFX:Motor = $MotorSFX
-onready var colisionador:CollisionShape2D = $CollisionShape2D
-onready var ImpactoSFX: AudioStreamPlayer = $Impacto
 onready var laser:RayoLaser = $LaserBeam2D setget, getLaser
 onready var escudo: Escudo = $Escudo setget, getEscudo
 
-var estadoActual:int = ESTADO.SPAWN
 var empuje:Vector2 = Vector2.ZERO
 var direccionRotacion:int = 0
 
@@ -25,9 +18,6 @@ func getLaser() -> RayoLaser:
 
 func getEscudo() -> Escudo:
 	return escudo
-
-func _ready() -> void:
-	pass
 
 func _integrate_forces(_state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
@@ -84,27 +74,6 @@ func player_input() -> void:
 		canion.set_estaDisparando(true)
 	if Input.is_action_just_released("Disparo Principal"):
 		canion.set_estaDisparando(false)
-	
-	
-
-func controladorEstado(nuevoEstado: int) -> void:
-	match nuevoEstado:
-		ESTADO.SPAWN:
-			colisionador.set_deferred("disabled", true)
-			canion.set_puedeDisparar(false)
-		ESTADO.VIVO:
-			colisionador.set_deferred("disabled", false)
-			canion.set_puedeDisparar(true)
-		ESTADO.INVENCIBLE:
-			colisionador.set_deferred("disabled", true)
-		ESTADO.MUERTO:
-			colisionador.set_deferred("disabled", true)
-			canion.set_puedeDisparar(false)
-			Eventos.emit_signal("naveDestruida", self, global_position, 3)
-			queue_free()
-		_:
-			printerr("Error estados")
-	estadoActual = nuevoEstado
 
 func esta_input_activo() -> bool:
 	if estadoActual in [ESTADO.MUERTO, ESTADO.SPAWN]:
@@ -112,8 +81,8 @@ func esta_input_activo() -> bool:
 	return true
 
 func recibirDanio(danio:float):
-	vida -= danio
-	if vida <= 0.0:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
 		controladorEstado(ESTADO.MUERTO)
 	ImpactoSFX.play()
 
@@ -123,7 +92,6 @@ func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
 
 func destruir() -> void:
 	controladorEstado(ESTADO.MUERTO)
-
 
 func _on_body_entered(body):
 	if body is Meteorito:
