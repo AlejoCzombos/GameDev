@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 55.4131, 63.4051 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "spawn"
 length = 0.5
 tracks/0/type = "value"
@@ -147,17 +147,16 @@ tracks/10/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 331.386
-
 [sub_resource type="CircleShape2D" id=3]
-radius = 739.346
+radius = 514.959
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 679.791
 
 [node name="EnemigoInterceptor" instance=ExtResource( 2 )]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 31
 script = ExtResource( 1 )
-hitpoints = 10.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = -1.5708
@@ -180,7 +179,7 @@ position = Vector2( 50, -27 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 autoplay = "spawn"
-anims/spawn = SubResource( 4 )
+anims/spawn = SubResource( 2 )
 
 [node name="SpriteSpawn" type="Sprite" parent="." index="5"]
 visible = false
@@ -196,18 +195,16 @@ scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 4 )
 
 [node name="AreaDisparo" type="Area2D" parent="." index="7"]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDisparo" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="AreaDeteccion" type="Area2D" parent="." index="8"]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="SpawnSFX" type="AudioStreamPlayer2D" parent="." index="9"]
 stream = ExtResource( 6 )
@@ -215,5 +212,9 @@ volume_db = -8.078
 pitch_scale = 0.9
 attenuation = 0.45
 bus = "SFX"
+[connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
+[connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]
+[connection signal="body_entered" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_entered"]
+[connection signal="body_exited" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_exited"]
 
 [editable path="Canion"]

@@ -19,6 +19,9 @@ func getLaser() -> RayoLaser:
 func getEscudo() -> Escudo:
 	return escudo
 
+func _ready():
+	DatosJuego.set_playerActual(self)
+
 func _integrate_forces(_state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
 	apply_torque_impulse(direccionRotacion * fuerzaRotacion)
