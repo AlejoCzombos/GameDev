@@ -46,9 +46,7 @@ func _on_AreaRecarga_body_entered(body) -> void:
 	playerEnZona = true
 	if body is Player:
 		navePlayer = body
-		body.set_gravity_scale(0.1)
 
 func _on_AreaRecarga_body_exited(body) -> void:
 	playerEnZona = false
-	if body is Player:
-		body.set_gravity_scale(0.0)
+
