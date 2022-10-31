@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Juego/Estaciones/ZonaRecarga.png" type="Texture" id=1]
+
+[node name="ZonaRecarga" type="Sprite"]
+modulate = Color( 0.211765, 0.729412, 0.960784, 0.189895 )
+scale = Vector2( 35.5808, 35.5808 )
+z_as_relative = false
+texture = ExtResource( 1 )

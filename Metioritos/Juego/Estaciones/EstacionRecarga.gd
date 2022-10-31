@@ -47,6 +47,6 @@ func _on_AreaRecarga_body_entered(body) -> void:
 	if body is Player:
 		navePlayer = body
 
-func _on_AreaRecarga_body_exited(body) -> void:
+func _on_AreaRecarga_body_exited(_body) -> void:
 	playerEnZona = false
 

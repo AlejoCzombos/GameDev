@@ -32,6 +32,7 @@ func conectarSeniales() -> void:
 	Eventos.connect("crearMeteorito", self, "_on_crearMeteorito")
 	Eventos.connect("particulasMeteorito", self, "_on_particulasMeteorito")
 	Eventos.connect("destruccionMeteorito", self, "_on_destruccionMeteorito")
+	Eventos.connect("baseDestruida", self, "_on_BaseDestruida")
 
 func crearContenedores() -> void:
 	contenedorProyectiles = Node.new()
@@ -67,12 +68,22 @@ func _on_crearMeteorito(posicionSpawn:Vector2, direccionMeteorito: Vector2, tama
 func _on_naveDestruida(nave:Player, posicion: Vector2, num_explosiones:int) -> void:
 	if nave is Player:
 		transicionCamara(posicion, posicion + crearPosicionAleatorea(-200.0, 200.0), camaraNivel, tiempoTransicionCamara)
-	
+	crearExplosion(posicion, num_explosiones, 0.6, Vector2(-100.0,100.0))
+
+func crearExplosion(posicion:Vector2, num_explosiones:int = 1, delay:float = 0.0, rangoAleatoreo:Vector2 = Vector2(0.0,0.0), escalaExplosion:float = 1) -> void:
 	for _i in range(num_explosiones):
 		var new_explosion:Node2D = explosion.instance()
-		new_explosion.global_position = posicion + crearPosicionAleatorea(-100, 100)
+		new_explosion.scale = Vector2(escalaExplosion,escalaExplosion)
+		new_explosion.global_position = posicion + crearPosicionAleatorea(rangoAleatoreo.x, rangoAleatoreo.y)
 		add_child(new_explosion)
-		yield(get_tree().create_timer(0.6),"timeout")
+		yield(get_tree().create_timer(delay),"timeout")
+
+func _on_BaseDestruida(posiciones:Array) -> void:
+	for posicion in posiciones:
+		crearExplosion(posicion, 1, 0.4,Vector2(0.0,0.0), 1)
+		yield(get_tree().create_timer(0.4),"timeout")
+	yield(get_tree().create_timer(0.7),"timeout")
+	crearExplosion(posiciones[0], 1, 0.0, Vector2(0.0,0.0), 2)
 
 func _on_particulasMeteorito(posicion: Vector2) -> void:
 	var new_MeteoritoParticulas: Node2D = particulaMeteorito.instance()
@@ -94,7 +105,7 @@ func _on_naveEnSectorPeligro(centroCam: Vector2, tipoPeligro: String, numeroPeli
 		pass
 
 func crearSectorEnemigos(numeroEnemigos:int) -> void:
-	for i in range(numeroEnemigos):
+	for _i in range(numeroEnemigos):
 		var new_interceptor:EnemigoInterceptor = enemigoInterceptor.instance()
 		var spawnPos:Vector2 = crearPosicionAleatorea(1000.0, 800.0)
 		new_interceptor.global_position = player.global_position + spawnPos

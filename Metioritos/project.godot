@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseEnemiga",
+"language": "GDScript",
+"path": "res://Juego/Estaciones/BaseEnemiga.gd"
+}, {
 "base": "Camera2D",
 "class": "CamaraJuego",
 "language": "GDScript",
@@ -95,6 +100,7 @@ _global_script_classes=[ {
 "path": "res://Juego/Meteoritos/MeteoritosSpawner.gd"
 } ]
 _global_script_class_icons={
+"BaseEnemiga": "",
 "CamaraJuego": "",
 "CamaraPlayer": "",
 "Canion": "",
@@ -210,6 +216,7 @@ RecargarLaser={
 2d_physics/layer_3="meteorito"
 2d_physics/layer_4="proyectilPlayer"
 2d_physics/layer_5="proyectilEnemigo"
+2d_physics/layer_6="baseEnemiga"
 
 [rendering]
 
