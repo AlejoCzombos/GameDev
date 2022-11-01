@@ -4,7 +4,7 @@ extends Node2D
 export var proyectil:PackedScene = null
 export var cadenciaDisparo: float = 0.8
 export var velocidadProyectil: int = 100
-export var danioProyectil: int = 1
+export var danioProyectil: float = 1
 
 onready var timerEnfriamiento: Timer = $TimerEnfriamiento
 onready var disparoSFX: AudioStreamPlayer2D = $Disparo

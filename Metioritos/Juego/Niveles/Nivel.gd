@@ -33,6 +33,7 @@ func conectarSeniales() -> void:
 	Eventos.connect("particulasMeteorito", self, "_on_particulasMeteorito")
 	Eventos.connect("destruccionMeteorito", self, "_on_destruccionMeteorito")
 	Eventos.connect("baseDestruida", self, "_on_BaseDestruida")
+	Eventos.connect("spawnOrbital", self, "_on_spawnOrbital")
 
 func crearContenedores() -> void:
 	contenedorProyectiles = Node.new()
@@ -78,11 +79,12 @@ func crearExplosion(posicion:Vector2, num_explosiones:int = 1, delay:float = 0.0
 		add_child(new_explosion)
 		yield(get_tree().create_timer(delay),"timeout")
 
-func _on_BaseDestruida(posiciones:Array) -> void:
+func _on_BaseDestruida(_base,posiciones:Array) -> void:
 	for posicion in posiciones:
 		crearExplosion(posicion, 1, 0.4,Vector2(0.0,0.0), 1)
 		yield(get_tree().create_timer(0.4),"timeout")
 	yield(get_tree().create_timer(0.7),"timeout")
+	crearExplosion(posiciones[0], 1, 0.0, Vector2(0.0,0.0), 2)
 	crearExplosion(posiciones[0], 1, 0.0, Vector2(0.0,0.0), 2)
 
 func _on_particulasMeteorito(posicion: Vector2) -> void:
@@ -103,6 +105,9 @@ func _on_naveEnSectorPeligro(centroCam: Vector2, tipoPeligro: String, numeroPeli
 	elif tipoPeligro == "Enemigo":
 		crearSectorEnemigos(numeroPeligros)
 		pass
+
+func _on_spawnOrbital(enemigo:EnemigoOrbital) -> void:
+	contenedorEnemigos.add_child(enemigo)
 
 func crearSectorEnemigos(numeroEnemigos:int) -> void:
 	for _i in range(numeroEnemigos):

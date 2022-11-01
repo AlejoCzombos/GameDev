@@ -56,12 +56,6 @@ playback/speed = 1.01
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 13.2598, 155.908 )
 
-[node name="BaseEnemiga" parent="." instance=ExtResource( 13 )]
-position = Vector2( -437.76, 702.661 )
-
-[node name="BaseEnemiga2" parent="." instance=ExtResource( 13 )]
-position = Vector2( -850.826, 700.416 )
-
 [node name="BaseEnemiga3" parent="." instance=ExtResource( 13 )]
-position = Vector2( 193.063, 698.171 )
+position = Vector2( -139.561, 853.995 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

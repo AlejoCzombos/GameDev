@@ -159,8 +159,8 @@ collision_mask = 15
 script = ExtResource( 1 )
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 rotation = -1.5708
-scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -169,7 +169,7 @@ shape = SubResource( 1 )
 [node name="Canion" parent="." index="2"]
 proyectil = ExtResource( 7 )
 cadenciaDisparo = 1.2
-velocidadProyectil = 1200
+velocidadProyectil = 1100
 
 [node name="PuntoDerecho" parent="Canion" index="2"]
 position = Vector2( 50, 27 )
@@ -182,16 +182,13 @@ autoplay = "spawn"
 anims/spawn = SubResource( 2 )
 
 [node name="SpriteSpawn" type="Sprite" parent="." index="5"]
-visible = false
-modulate = Color( 1, 1, 1, 0.862745 )
-rotation = 3.14159
-scale = Vector2( 1.5, 1.5 )
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
 [node name="SpriteSpawn2" type="Sprite" parent="." index="6"]
 visible = false
-rotation = 3.14159
-scale = Vector2( 3.5, 3.5 )
+modulate = Color( 1, 1, 1, 0.862745 )
 texture = ExtResource( 4 )
 
 [node name="AreaDisparo" type="Area2D" parent="." index="7"]
