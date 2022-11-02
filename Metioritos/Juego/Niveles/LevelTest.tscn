@@ -38,7 +38,7 @@ numeroPeligros = 2
 [node name="EstacionesRecarga" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="EstacionesRecarga" instance=ExtResource( 12 )]
-position = Vector2( 1089.66, 628.855 )
+position = Vector2( 1575.11, 898.55 )
 
 [node name="TweenCamara" type="Tween" parent="."]
 
@@ -55,7 +55,11 @@ playback/speed = 1.01
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 13.2598, 155.908 )
+hitpoints = 30.0
 
 [node name="BaseEnemiga3" parent="." instance=ExtResource( 13 )]
-position = Vector2( -139.561, 853.995 )
+position = Vector2( -1.71677, 955.88 )
+
+[node name="BaseEnemiga4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1.26102, -901.51 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/AssetsBaseEnemiga/spaceStation_024.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Juego/Estaciones/BaseEnemiga.gd" type="Script" id=7]
 [ext_resource path="res://Juego/Naves/Enemigos/Area2D.gd" type="Script" id=8]
 [ext_resource path="res://Juego/Naves/Enemigos/orbital/EnemigoOrbital.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/Estaciones/Path2D.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "defalut"
@@ -18,7 +19,7 @@ resource_name = "rotacionAntihorario"
 length = 6.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites:rotation_degrees")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,18 +27,6 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 6 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, -360.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AreaColision:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 0.965936 ),
 "update": 0,
 "values": [ 0.0, -360.0 ]
 }
@@ -47,24 +36,12 @@ resource_name = "rotacionHorario"
 length = 6.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites:rotation_degrees")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 360.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AreaColision:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -79,6 +56,11 @@ height = 386.463
 radius = 27.4827
 height = 217.13
 
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -346.745, -11.257, -67.7347, 71.2719, 67.7347, -71.2719, -270.098, -248.236, 0, 0, 0, 0, -6.28895, -337.326, -69.5172, -87.3081, 69.5172, 87.3081, 225.435, -246.454, 0, 0, 0, 0, 318.125, -0.566162, 78.4297, -90.8717, -78.4297, 90.8717, 241.477, 268.485, 0, 0, 0, 0, -2.72396, 362.92, 74.8647, 73.0537, -74.8647, -73.0537, -261.185, 263.14, 0, 0, 0, 0, -348.528, 19.0336 )
+}
+
 [node name="BaseEnemiga" type="Node2D"]
 z_as_relative = false
 script = ExtResource( 7 )
@@ -86,6 +68,8 @@ __meta__ = {
 "_edit_vertical_guides_": [ -494.304 ]
 }
 orbital = ExtResource( 9 )
+numeroOrbitales = 6
+intervaloSpawn = 1.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/defalut = SubResource( 1 )
@@ -143,12 +127,21 @@ texture = ExtResource( 6 )
 position = Vector2( 0, -400 )
 
 [node name="Sur" type="Position2D" parent="PosicionesSpawn"]
-position = Vector2( 0, 450 )
+position = Vector2( 0, 400 )
 
 [node name="Este" type="Position2D" parent="PosicionesSpawn"]
 position = Vector2( 400, 0 )
 
 [node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
 position = Vector2( -400, 0 )
+
+[node name="RutaEnemigo" type="Path2D" parent="."]
+position = Vector2( 3.31366, 0 )
+scale = Vector2( 0.99961, 1 )
+curve = SubResource( 6 )
+script = ExtResource( 10 )
+
+[node name="TimerSpawnerEnemigos" type="Timer" parent="."]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
+[connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]
