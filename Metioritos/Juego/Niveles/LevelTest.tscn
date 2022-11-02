@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Juego/Naves/Enemigos/Interceptor/EnemigoInterceptor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Juego/Estaciones/Rele/ReleDeMasa.tscn" type="PackedScene" id=14]
 
 [node name="LevelTest" type="Node"]
 script = ExtResource( 2 )
@@ -22,6 +23,7 @@ particulaMeteorito = ExtResource( 8 )
 destruccionMeteorito = ExtResource( 9 )
 SectorMeteoritos = ExtResource( 10 )
 enemigoInterceptor = ExtResource( 11 )
+reledeMasa = ExtResource( 14 )
 
 [node name="TrigguerLluviaMeteoritos" type="Node" parent="."]
 
@@ -57,9 +59,11 @@ playback/speed = 1.01
 position = Vector2( 13.2598, 155.908 )
 hitpoints = 30.0
 
-[node name="BaseEnemiga3" parent="." instance=ExtResource( 13 )]
+[node name="ContenedorBasesEnemigas" type="Node" parent="."]
+
+[node name="BaseEnemiga3" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
 position = Vector2( -1.71677, 955.88 )
 
-[node name="BaseEnemiga4" parent="." instance=ExtResource( 13 )]
+[node name="BaseEnemiga4" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
 position = Vector2( 1.26102, -901.51 )
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

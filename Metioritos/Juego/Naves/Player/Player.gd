@@ -87,5 +87,9 @@ func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
 	if anim_name == "spawn":
 		controladorEstado(ESTADO.VIVO)
 
-
+func entradaRele() -> void:
+	controladorEstado(ESTADO.SPAWN)
+	empuje = Vector2.ZERO
+	motorSFX.sonido_off()
+	laser.set_is_casting(false)
 
