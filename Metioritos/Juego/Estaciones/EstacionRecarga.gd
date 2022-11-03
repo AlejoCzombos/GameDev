@@ -43,10 +43,13 @@ func _on_AreaColision_body_entered(body:Node) -> void:
 		body.destruir()
 
 func _on_AreaRecarga_body_entered(body) -> void:
-	playerEnZona = true
 	if body is Player:
+		playerEnZona = true
 		navePlayer = body
+		Eventos.emit_signal("detectoZonaRecarga", true)
 
-func _on_AreaRecarga_body_exited(_body) -> void:
-	playerEnZona = false
+func _on_AreaRecarga_body_exited(body) -> void:
+	if body is Player:
+		playerEnZona = false
+		Eventos.emit_signal("detectoZonaRecarga", false)
 

@@ -9,3 +9,7 @@ signal crearMeteorito(posicion, direccion, tamanio)
 signal particulasMeteorito(posicion)
 signal destruccionMeteorito(posicion)
 signal spawnOrbital(orbital)
+
+signal nivelIniciado()
+signal nivelTerminado()
+signal detectoZonaRecarga(deteccion)

@@ -23,6 +23,8 @@ var player:Player = null
 var numeroBasesEnemigas:int = 0
 
 func _ready() -> void:
+	Eventos.emit_signal("nivelIniciado")
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conectarSeniales()
 	crearContenedores()
 	numeroBasesEnemigas = contabilizadorBasesEnemigas()
@@ -98,7 +100,13 @@ func crearPosicionAleatorea(rangoHorizontal:float, rangoVertical: float) -> Vect
 
 func crearRele() -> void:
 	var new_rele = reledeMasa.instance()
-	new_rele.global_position = player.global_position + crearPosicionAleatorea(1000.0,800.0)
+	var posicionAleatorea:Vector2 = crearPosicionAleatorea(1000.0,800.0)
+	var margen:Vector2 = Vector2(600.0,600.0)
+	if posicionAleatorea.x < 0:
+		margen.x *= -1
+	if posicionAleatorea.y < 0 :
+		margen.y *= -1
+	new_rele.global_position = player.global_position + (margen + posicionAleatorea) 
 	add_child(new_rele)
 
 func _on_disparo(proyectil:Proyectil) -> void:
@@ -112,6 +120,7 @@ func _on_crearMeteorito(posicionSpawn:Vector2, direccionMeteorito: Vector2, tama
 func _on_naveDestruida(nave:Player, posicion: Vector2, num_explosiones:int) -> void:
 	if nave is Player:
 		transicionCamara(posicion, posicion + crearPosicionAleatorea(-200.0, 200.0), camaraNivel, tiempoTransicionCamara)
+		$ReiniciarNivel.start()
 	crearExplosion(posicion, num_explosiones, 0.6, Vector2(-100.0,100.0))
 
 func crearExplosion(posicion:Vector2, num_explosiones:int = 1, delay:float = 0.0, rangoAleatoreo:Vector2 = Vector2(0.0,0.0), escalaExplosion:float = 1) -> void:
@@ -158,3 +167,8 @@ func _on_spawnOrbital(enemigo:EnemigoOrbital) -> void:
 func _on_TweenCamara_tween_completed(object, _key) -> void:
 	if object.name == "CamaraPlayer":
 		 object.global_position = $Player.global_position
+
+func _on_ReiniciarNivel_timeout():
+	Eventos.emit_signal("nivelTerminado")
+	yield(get_tree().create_timer(1.0),"timeout")
+	get_tree().reload_current_scene()

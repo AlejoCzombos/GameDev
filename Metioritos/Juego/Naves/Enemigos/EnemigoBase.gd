@@ -3,13 +3,16 @@ extends Nave
 
 var playerObjetivo:Player = null
 var dirPlayer:Vector2
+var frameActual:int = 0
 
 func _ready() ->void:
 	playerObjetivo = DatosJuego.get_playerActual()
 	Eventos.connect("naveDestruida", self, "_on_naveDestruida")
 
-func _physics_process(_delta: float) -> void:
-	rotarHaciaPlayer()
+func _physics_process(_delta:float) -> void:
+	frameActual += 1
+	if frameActual % 3 == 0:
+		rotarHaciaPlayer()
 
 func _on_body_entered(body):
 	._on_body_entered(body)
