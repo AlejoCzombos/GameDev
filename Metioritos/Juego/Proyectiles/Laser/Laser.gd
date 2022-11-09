@@ -50,6 +50,7 @@ func set_is_casting(cast: bool) -> void:
 		fill.points[1] = cast_to
 		appear()
 	else:
+		Eventos.emit_signal("ocultarEnergiaLaser")
 		LaserSFX.stop()
 		collision_particles.emitting = false
 		disappear()
@@ -62,7 +63,7 @@ func controlarEnergia(consumo: float) -> void:
 	energia += consumo
 	if energia > energiaOriginal:
 		energia = energiaOriginal
-	print("Energia laser: ", energia)
+	Eventos.emit_signal("cambioEnergiaLaser", energiaOriginal,energia)
 # Controls the emission of particles and extends the Line2D to `cast_to` or the ray's 
 # collision point, whichever is closest.
 func cast_beam(delta:float) -> void:

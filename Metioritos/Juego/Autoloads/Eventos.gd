@@ -13,3 +13,11 @@ signal spawnOrbital(orbital)
 signal nivelIniciado()
 signal nivelTerminado()
 signal detectoZonaRecarga(deteccion)
+
+#HUD
+signal cambioNumeroMeteoritos(numero)
+signal actualizarTiempo(tiempoRestante)
+signal cambioEnergiaLaser(energiaMax,energiaActual)
+signal ocultarEnergiaLaser()
+signal cambioEnergiaEscudo(energiaMax,energiaActual)
+signal ocultarEnergiaEscudo()

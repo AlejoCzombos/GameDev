@@ -8,8 +8,10 @@ onready var particulasMateorito:Node
 onready var camaraNivel:Camera2D = $CameraNivel
 onready var camaraPlayer:Camera2D = $Player/CamaraPlayer
 onready var contenedorEnemigos:Node
+onready var actualizadorTimer:Timer = $ActualizadorTimer
 
 export var tiempoTransicionCamara: float = 1.4
+export var tiempoLimite:int = 10
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var particulaMeteorito:PackedScene = null
@@ -24,11 +26,13 @@ var numeroBasesEnemigas:int = 0
 
 func _ready() -> void:
 	Eventos.emit_signal("nivelIniciado")
+	Eventos.emit_signal("actualizarTiempo",tiempoLimite)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conectarSeniales()
 	crearContenedores()
 	numeroBasesEnemigas = contabilizadorBasesEnemigas()
 	player = DatosJuego.get_playerActual()
+	actualizadorTimer.start()
 
 func conectarSeniales() -> void:
 	Eventos.connect("disparo", self, "_on_disparo")
@@ -81,6 +85,7 @@ func transicionCamara(desde: Vector2, hasta: Vector2, camaraActual: Camera2D, ti
 
 func descontarMeteoritos() -> void:
 	numeroTotalMeteoritos -= 1
+	Eventos.emit_signal("cambioNumeroMeteoritos",numeroTotalMeteoritos)
 	if numeroTotalMeteoritos <= 0:
 		contenedorSectoresMeteorito.get_child(0).queue_free();
 		camaraPlayer.set_puedeHacerseZoom(true)
@@ -88,6 +93,10 @@ func descontarMeteoritos() -> void:
 		camaraPlayer.zoom = camaraNivel.zoom
 		camaraPlayer.zoomSuavizado(zoomActual.x, zoomActual.y, 1.0)
 		transicionCamara(camaraNivel.global_position, camaraPlayer.global_position, camaraPlayer, tiempoTransicionCamara * 0.10)
+
+func destruirNivel() -> void:
+	crearExplosion(player.global_position,2,0.8,Vector2(300.0,200.0),8.0)
+	player.destruir()
 
 func contabilizadorBasesEnemigas() -> int:
 	return $ContenedorBasesEnemigas.get_child_count()
@@ -157,6 +166,7 @@ func _on_destruccionMeteorito(posicion: Vector2) -> void:
 func _on_naveEnSectorPeligro(centroCam: Vector2, tipoPeligro: String, numeroPeligros: int) -> void:
 	if tipoPeligro == "Meteorito":
 		crearSectorMeteoritos(centroCam, numeroPeligros)
+		Eventos.emit_signal("cambioNumeroMeteoritos",numeroPeligros)
 	elif tipoPeligro == "Enemigo":
 		crearSectorEnemigos(numeroPeligros)
 		pass
@@ -172,3 +182,10 @@ func _on_ReiniciarNivel_timeout():
 	Eventos.emit_signal("nivelTerminado")
 	yield(get_tree().create_timer(1.0),"timeout")
 	get_tree().reload_current_scene()
+
+
+func _on_ActualizadorTimer_timeout():
+	tiempoLimite -= 1
+	Eventos.emit_signal("actualizarTiempo",tiempoLimite)
+	if tiempoLimite == 0:
+		destruirNivel()

@@ -24,10 +24,12 @@ func controlarEnergia(consumo: float) -> void:
 	energia += consumo
 	if energia > energiaOriginal:
 		energia = energiaOriginal
-	print("Energia escudo: ", energia)
 	if energia <= 0.0:
+		Eventos.emit_signal("ocultarEnergiaEscudo")
 		desactivar()
+		return
 	
+	Eventos.emit_signal("cambioEnergiaEscudo",energiaOriginal,energia)
 
 func desactivar() -> void:
 	set_process(false)

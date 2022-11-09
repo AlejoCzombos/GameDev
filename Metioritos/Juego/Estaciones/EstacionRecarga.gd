@@ -21,6 +21,11 @@ func inputRecargas(event: InputEvent) -> void:
 		navePlayer.getEscudo().controlarEnergia(radioRecarga)
 	elif event.is_action("RecargarLaser"):
 		navePlayer.getLaser().controlarEnergia(radioRecarga)
+	
+	if event.is_action_released("RecargarLaser"):
+		Eventos.emit_signal("ocultarEnergiaLaser")
+	elif event.is_action_released("RecargarEsudo"):
+		Eventos.emit_signal("ocultarEnergiaEscudo")
 
 
 func puedeRecargar(event: InputEvent) -> bool:

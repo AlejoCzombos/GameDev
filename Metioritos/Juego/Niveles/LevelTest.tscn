@@ -18,6 +18,7 @@
 
 [node name="LevelTest" type="Node"]
 script = ExtResource( 2 )
+tiempoLimite = 21
 explosion = ExtResource( 4 )
 meteorito = ExtResource( 6 )
 particulaMeteorito = ExtResource( 8 )
@@ -72,5 +73,11 @@ playback/speed = 1.01
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 13.2598, 155.908 )
 hitpoints = 30.0
+
+[node name="ActualizadorTimer" type="Timer" parent="."]
+
+[node name="RestarTime" type="Timer" parent="."]
+wait_time = 5.997
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
 [connection signal="timeout" from="ReiniciarNivel" to="." method="_on_ReiniciarNivel_timeout"]
+[connection signal="timeout" from="ActualizadorTimer" to="." method="_on_ActualizadorTimer_timeout"]
