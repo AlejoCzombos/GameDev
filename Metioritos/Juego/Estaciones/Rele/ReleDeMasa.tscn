@@ -280,7 +280,9 @@ tracks/8/keys = {
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 360.953
 
-[node name="ReleDeMasa" type="Node2D"]
+[node name="ReleDeMasa" type="Node2D" groups=[
+"Minimapa",
+]]
 script = ExtResource( 8 )
 
 [node name="Sprites" type="Node2D" parent="."]

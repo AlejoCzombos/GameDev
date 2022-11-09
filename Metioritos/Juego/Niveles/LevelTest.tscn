@@ -49,9 +49,9 @@ position = Vector2( -1470.02, 64.9564 )
 tipoPeligro = "Enemigo"
 numeroPeligros = 2
 
-[node name="EstacionesRecarga" type="Node" parent="."]
+[node name="ContenedorEstaciones" type="Node" parent="."]
 
-[node name="EstacionRecarga" parent="EstacionesRecarga" instance=ExtResource( 12 )]
+[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
 position = Vector2( 1575.11, 898.55 )
 
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
@@ -81,3 +81,7 @@ wait_time = 5.997
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
 [connection signal="timeout" from="ReiniciarNivel" to="." method="_on_ReiniciarNivel_timeout"]
 [connection signal="timeout" from="ActualizadorTimer" to="." method="_on_ActualizadorTimer_timeout"]
+
+[editable path="HUD"]
+
+[editable path="HUD/Minimapa"]

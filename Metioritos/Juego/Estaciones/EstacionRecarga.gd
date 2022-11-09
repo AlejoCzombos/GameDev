@@ -1,3 +1,4 @@
+class_name EstacionRecarga
 extends Node2D
 
 onready var recargarSFX:AudioStreamPlayer = $RecargandoSFX

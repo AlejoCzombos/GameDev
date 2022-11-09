@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Naves/Player/Escudo/Escudo.gd"
 }, {
+"base": "Node2D",
+"class": "EstacionRecarga",
+"language": "GDScript",
+"path": "res://Juego/Estaciones/EstacionRecarga.gd"
+}, {
 "base": "Line2D",
 "class": "Estela",
 "language": "GDScript",
@@ -73,6 +78,11 @@ _global_script_classes=[ {
 "class": "Meteorito",
 "language": "GDScript",
 "path": "res://Juego/Meteoritos/Meteorito.gd"
+}, {
+"base": "MarginContainer",
+"class": "Minimapa",
+"language": "GDScript",
+"path": "res://Juego/UI/Minimapa/Minimapa.gd"
 }, {
 "base": "AudioStreamPlayer2D",
 "class": "Motor",
@@ -135,9 +145,11 @@ _global_script_class_icons={
 "EnemigoInterceptor": "",
 "EnemigoOrbital": "",
 "Escudo": "",
+"EstacionRecarga": "",
 "Estela": "",
 "HUD": "",
 "Meteorito": "",
+"Minimapa": "",
 "Motor": "",
 "Nave": "",
 "Nivel": "",
@@ -236,6 +248,11 @@ RecargarEsudo={
 RecargarLaser={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+minimapa={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
  ]
 }
 

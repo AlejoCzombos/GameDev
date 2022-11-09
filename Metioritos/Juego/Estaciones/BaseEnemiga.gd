@@ -43,6 +43,7 @@ func destuir() -> void:
 	]
 	
 	Eventos.emit_signal("baseDestruida",self, posicionesPartes)
+	Eventos.emit_signal("minimapaObjetoDestruido",self)
 	queue_free()
 
 func _on_AreaColision_body_entered(body:Node) -> void:
