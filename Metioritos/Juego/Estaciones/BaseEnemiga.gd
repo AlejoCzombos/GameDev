@@ -8,11 +8,13 @@ export var intervaloSpawn:float = 0.8
 
 onready var impactoSFX: AudioStreamPlayer2D = $ImpactoSFX
 onready var timerSpawner:Timer = $TimerSpawnerEnemigos
+onready var barraSalud:BarraSalud = $BarraSalud
 
 var estaDestruida:bool = false
 var posicionSpawn:Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	barraSalud.setValores(hitpoints)
 	timerSpawner.wait_time = intervaloSpawn
 	$AnimationPlayer.play(elegirAnimacionAleatorea()) 
 
@@ -26,7 +28,7 @@ func elegirAnimacionAleatorea() -> String:
 
 func recibirDanio(danio:float) -> void:
 	hitpoints -= danio
-	
+	barraSalud.controlarBarra(hitpoints, true)
 	if hitpoints <= 0 && !estaDestruida:
 		estaDestruida = true
 		destuir()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Juego/UI/BarraSalud.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Naves/Player/Nave.gd" type="Script" id=2]
 [ext_resource path="res://Juego/Naves/Player/MaterialFisico.tres" type="PhysicsMaterial" id=3]
 [ext_resource path="res://Juego/Proyectiles/Canion.tscn" type="PackedScene" id=4]
@@ -39,6 +40,11 @@ bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/spawn = SubResource( 1 )
+
+[node name="ProgressBar" parent="." instance=ExtResource( 1 )]
+margin_left = -83.0
+margin_right = 29.0
+margin_bottom = 73.0
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

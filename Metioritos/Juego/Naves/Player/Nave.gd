@@ -8,10 +8,12 @@ export var hitpoints:float = 10.0
 onready var canion: Canion = $Canion
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var ImpactoSFX: AudioStreamPlayer = $ImpactoSFX
+onready var barraSalud:BarraSalud = $ProgressBar
 
 var estadoActual:int = ESTADO.SPAWN
 
 func _ready() -> void:
+	barraSalud.setValores(hitpoints)
 	controladorEstado(estadoActual)
 
 func controladorEstado(nuevoEstado: int) -> void:
@@ -44,6 +46,7 @@ func recibirDanio(danio:float):
 	hitpoints -= danio
 	if hitpoints <= 0.0:
 		controladorEstado(ESTADO.MUERTO)
+	barraSalud.controlarBarra(hitpoints, true)
 	ImpactoSFX.play()
 
 func _on_body_entered(body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/AssetsBaseEnemiga/spaceStation_024.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Juego/Naves/Enemigos/Area2D.gd" type="Script" id=8]
 [ext_resource path="res://Juego/Naves/Enemigos/orbital/EnemigoOrbital.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Estaciones/Path2D.gd" type="Script" id=10]
+[ext_resource path="res://Juego/UI/BarraSalud.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "defalut"
@@ -58,8 +59,17 @@ height = 217.13
 
 [sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -346.745, -11.257, -67.7347, 71.2719, 67.7347, -71.2719, -270.098, -248.236, 0, 0, 0, 0, -6.28895, -337.326, -69.5172, -87.3081, 69.5172, 87.3081, 225.435, -246.454, 0, 0, 0, 0, 318.125, -0.566162, 78.4297, -90.8717, -78.4297, 90.8717, 241.477, 268.485, 0, 0, 0, 0, -2.72396, 362.92, 74.8647, 73.0537, -74.8647, -73.0537, -261.185, 263.14, 0, 0, 0, 0, -348.528, 19.0336 )
+"points": PoolVector2Array( 0, 0, 0, 0, -346.745, -11.257, 0, 0, 0, 0, -376.958, -60.5391, 0, 0, 0, 0, -318.072, -99.2203, 0, 0, 0, 0, -350.038, -151.356, 0, 0, 0, 0, -289.47, -196.764, -2.11919, 7.36376, 2.11919, -7.36376, -307.977, -257.309, 0, 0, 0, 0, -220.49, -277.49, 0, 0, 0, 0, -191.888, -331.308, 0, 0, 0, 0, -136.367, -302.717, 0, 0, 0, 0, -99.3534, -373.353, 0, 0, 0, 0, -45.515, -327.944, 0, 0, 0, 0, 10.0058, -378.398, 0, 0, 0, 0, 53.7495, -326.262, 0, 0, 0, 0, 102.54, -363.262, 0, 0, 0, 0, 124.412, -307.763, 0, 0, 0, 0, 166.474, -338.035, 0, 0, 0, 0, 210.217, -274.127, -3.90169, -6.58204, 3.90169, 6.58204, 265.738, -287.581, 0, 0, 0, 0, 270.785, -220.309, 0, 0, 0, 0, 341.448, -216.946, 0, 0, 0, 0, 282.563, -156.401, 0, 0, 0, 0, 375.097, -137.902, 0, 0, 0, 0, 338.083, -82.4024, 0, 0, 0, 0, 400.334, -45.403, 0, 0, 0, 0, 343.131, -10.0853, 0, 0, 0, 0, 398.652, 55.5046, 0, 0, 0, 0, 333.036, 65.5953, 0, 0, 0, 0, 405.381, 121.095, 0, 0, 0, 0, 311.164, 148.003, 0, 0, 0, 0, 376.78, 211.911, 0, 0, 0, 0, 319.576, 223.684, 0, 0, 0, 0, 334.718, 289.274, -0.645399, -0.0548773, 0.645399, 0.0548773, 259.008, 275.819, 0, 0, 0, 0, 259.008, 356.546, 0, 0, 0, 0, 176.568, 317.864, 0, 0, 0, 0, 134.507, 388.5, 0, 0, 0, 0, 92.4458, 349.818, 0, 0, 0, 0, 52.067, 405.318, 0, 0, 0, 0, 4.95842, 354.864, 0, 0, 0, 0, -16.9134, 406.999, 0, 0, 0, 0, -74.1167, 334.682, 0, 0, 0, 0, -112.813, 395.227, 0, 0, 0, 0, -136.367, 309.455, 0, 0, 0, 0, -232.267, 359.909, 0, 0, 0, 0, -238.997, 284.228, 2.51939, 4.10019, -2.51939, -4.10019, -309.66, 289.274, 0, 0, 0, 0, -282.74, 205.184, 0, 0, 0, 0, -356.768, 173.23, 0, 0, 0, 0, -314.707, 109.322, 0, 0, 0, 0, -380.322, 50.4592, 0, 0, 0, 0, -348.528, 19.0336 )
 }
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0.34902, 0.568627, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0.317647, 0.278431, 1 )
+border_blend = true
 
 [node name="BaseEnemiga" type="Node2D" groups=[
 "Minimapa",
@@ -138,12 +148,20 @@ position = Vector2( 400, 0 )
 position = Vector2( -400, 0 )
 
 [node name="RutaEnemigo" type="Path2D" parent="."]
-position = Vector2( 3.31366, 0 )
+position = Vector2( 2.38419e-07, 0 )
 scale = Vector2( 0.99961, 1 )
 curve = SubResource( 6 )
 script = ExtResource( 10 )
 
 [node name="TimerSpawnerEnemigos" type="Timer" parent="."]
+
+[node name="BarraSalud" parent="." instance=ExtResource( 11 )]
+margin_left = -102.905
+margin_top = -236.0
+margin_right = 105.095
+margin_bottom = -212.0
+rect_rotation = 0.0
+custom_styles/fg = SubResource( 7 )
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]

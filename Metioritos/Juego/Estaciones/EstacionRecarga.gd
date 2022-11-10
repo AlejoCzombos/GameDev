@@ -3,12 +3,17 @@ extends Node2D
 
 onready var recargarSFX:AudioStreamPlayer = $RecargandoSFX
 onready var sinEnergiaSFX:AudioStreamPlayer = $SinEnergiaSFX
+onready var barraEnergia:BarraSalud = $BarraSalud
 
 export var radioRecarga: float = 0.1
 export var cantidadEnergia:float = 14.0
 
 var navePlayer:Player = null
 var playerEnZona: bool = false
+
+func _ready():
+	barraEnergia.max_value = cantidadEnergia
+	barraEnergia.value = cantidadEnergia
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !puedeRecargar(event):
@@ -42,7 +47,7 @@ func controlarEnergia() -> void:
 	if cantidadEnergia <= 0.0:
 		sinEnergiaSFX.play()
 		recargarSFX.apagar()
-	print("Energia estacion: ", cantidadEnergia)
+	barraEnergia.value = cantidadEnergia
 
 func _on_AreaColision_body_entered(body:Node) -> void:
 	if body.has_method("destruir"):

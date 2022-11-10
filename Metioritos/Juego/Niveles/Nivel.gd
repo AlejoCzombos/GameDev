@@ -130,7 +130,7 @@ func _on_naveDestruida(nave:Player, posicion: Vector2, num_explosiones:int) -> v
 	if nave is Player:
 		transicionCamara(posicion, posicion + crearPosicionAleatorea(-200.0, 200.0), camaraNivel, tiempoTransicionCamara)
 		$ReiniciarNivel.start()
-	crearExplosion(posicion, num_explosiones, 0.6, Vector2(-100.0,100.0))
+		crearExplosion(posicion, num_explosiones, 0.6, Vector2(-100.0,100.0))
 
 func crearExplosion(posicion:Vector2, num_explosiones:int = 1, delay:float = 0.0, rangoAleatoreo:Vector2 = Vector2(0.0,0.0), escalaExplosion:float = 1) -> void:
 	for _i in range(num_explosiones):
