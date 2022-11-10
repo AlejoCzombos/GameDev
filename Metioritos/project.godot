@@ -134,10 +134,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Meteoritos/SectorMeteoritos.gd"
 }, {
+"base": "Node",
+"class": "menuPrincipal",
+"language": "GDScript",
+"path": "res://Juego/UI/MenuPrincipal.gd"
+}, {
 "base": "Position2D",
 "class": "meteoritosSpawner",
 "language": "GDScript",
 "path": "res://Juego/Meteoritos/MeteoritosSpawner.gd"
+}, {
+"base": "Node",
+"class": "musicaJuego",
+"language": "GDScript",
+"path": "res://Juego/Autoloads/MusicaJuego.gd"
 } ]
 _global_script_class_icons={
 "BarraSalud": "",
@@ -165,7 +175,9 @@ _global_script_class_icons={
 "ReleDeMasa": "",
 "SectorDePeligro": "",
 "SectorMeteoritos": "",
-"meteoritosSpawner": ""
+"menuPrincipal": "",
+"meteoritosSpawner": "",
+"musicaJuego": ""
 }
 
 [application]
@@ -178,6 +190,7 @@ config/icon="res://icon.png"
 
 Eventos="*res://Juego/Autoloads/Eventos.gd"
 DatosJuego="*res://Juego/Autoloads/DatosJuego.gd"
+MusicaJuego="*res://Juego/Autoloads/MusicaJuego.tscn"
 
 [debug]
 
