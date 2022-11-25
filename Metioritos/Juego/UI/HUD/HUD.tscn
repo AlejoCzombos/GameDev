@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/UI/HUD/HUD.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Juego/UI/Menus/MenuPausa.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Juego/UI/HUD/ContenedorInformacion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juego/UI/HUD/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/UI/Minimapa/Minimapa.tscn" type="PackedScene" id=5]
@@ -20,38 +20,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1.86607, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "Mostar"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Ocultar"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -87,7 +55,36 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "mostarSuavizado"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -102,8 +99,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "ocultarSuavizado"
+[sub_resource type="Animation" id=7]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -137,22 +133,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="FadeCanvas/ColorRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -95.5
-margin_top = -78.0
-margin_right = 95.5
-margin_bottom = 78.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeCanvas"]
 anims/fade_In = SubResource( 1 )
 
@@ -160,11 +140,19 @@ anims/fade_In = SubResource( 1 )
 "ContenedorInfo",
 ] instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -146.0
+margin_right = 283.0
+margin_bottom = -16.0
+autoOcultar = true
 
 [node name="InfoMeteoritos" parent="." groups=[
 "ContenedorInfo",
 ] instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
+autoOcultar = true
 
 [node name="Label" parent="InfoMeteoritos" index="1"]
 text = "Meteoritos
@@ -195,8 +183,8 @@ margin_right = -16.0
 margin_bottom = -15.0
 
 [node name="AnimationPlayer" parent="EnergiaLaser" index="0"]
-anims/Mostar = SubResource( 6 )
-anims/Ocultar = SubResource( 7 )
+anims/Mostar = SubResource( 2 )
+anims/Ocultar = SubResource( 3 )
 
 [node name="Label" parent="EnergiaLaser" index="1"]
 text = "Energia Laser
@@ -211,15 +199,15 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -283.0
-margin_top = -145.0
+margin_top = -293.0
 margin_right = -16.0
-margin_bottom = -15.0
+margin_bottom = -163.0
 
 [node name="AnimationPlayer" parent="EnergiaEscudo" index="0"]
-anims/Mostar = SubResource( 2 )
-anims/Ocultar = SubResource( 3 )
-anims/mostarSuavizado = SubResource( 4 )
-anims/ocultarSuavizado = SubResource( 5 )
+anims/Mostar = SubResource( 4 )
+anims/Ocultar = SubResource( 5 )
+anims/mostarSuavizado = SubResource( 6 )
+anims/ocultarSuavizado = SubResource( 7 )
 
 [node name="Label" parent="EnergiaEscudo" index="1"]
 margin_left = -0.707031
@@ -229,6 +217,8 @@ margin_bottom = -78.1213
 text = "Energia Escudo"
 
 [node name="Minimapa" parent="." instance=ExtResource( 5 )]
+
+[node name="MenuPausa" parent="." instance=ExtResource( 2 )]
 
 [editable path="InfoZonaRecarga"]
 

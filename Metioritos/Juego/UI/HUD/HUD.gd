@@ -22,6 +22,7 @@ func conectarSeniales() -> void:
 	Eventos.connect("ocultarEnergiaEscudo", infoEnergiaEscudo, "ocultar")
 	Eventos.connect("naveDestruida",self,"_on_naveDestruida")
 
+
 func fadeIn() -> void:
 	$FadeCanvas/AnimationPlayer.play("fade_In")
 

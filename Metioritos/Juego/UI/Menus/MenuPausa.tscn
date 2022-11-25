@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Juego/UI/Menus/MenuPausa.gd" type="Script" id=1]
+[ext_resource path="res://Juego/UI/Menus/BotonSalir.gd" type="Script" id=2]
+[ext_resource path="res://Juego/UI/Menus/BotonBase.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.689034, 0.820313, 0.455017, 1 )
+border_width_bottom = 10
+border_color = Color( 0.626132, 0.746094, 0.40802, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.694118, 0.498039, 1 )
+border_color = Color( 0, 0.572266, 0.410609, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.509766, 0.365764, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0.835294, 0.6, 1 )
+border_width_bottom = 5
+border_color = Color( 0, 0.692871, 0.497696, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 1
+
+[node name="MenuPausa" type="Control"]
+pause_mode = 2
+anchor_top = -0.00146982
+anchor_right = 1.0
+anchor_bottom = 0.99853
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.203922, 0.203922, 0.203922, 0.701961 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -210.0
+margin_top = -250.189
+margin_right = 210.0
+margin_bottom = 247.811
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -154.0
+margin_top = -162.0
+margin_right = 154.0
+margin_bottom = 154.0
+custom_constants/separation = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonContinuar" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 308.0
+margin_bottom = 93.0
+
+[node name="BotonMenuPrincipal" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 104.0
+margin_right = 308.0
+margin_bottom = 197.0
+text = "Menu Principal"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 208.0
+margin_right = 308.0
+margin_bottom = 212.0
+
+[node name="BotonBase" parent="Panel/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 223.0
+margin_right = 308.0
+margin_bottom = 316.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Salir"
+script = ExtResource( 2 )
+[connection signal="pressed" from="Panel/VBoxContainer/BotonContinuar" to="." method="_on_BotonContinuar_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/BotonMenuPrincipal" to="." method="_on_BotonMenuPrincipal_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/BotonBase" to="Panel/VBoxContainer/BotonBase" method="_on_BotonBase_pressed"]

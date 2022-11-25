@@ -236,12 +236,8 @@ margin_left = -107.898
 margin_top = 65.6703
 margin_right = 22.1022
 margin_bottom = 84.6703
-rect_rotation = -90.0
 custom_styles/fg = SubResource( 5 )
 custom_styles/bg = SubResource( 6 )
-value = 67.0
-rounded = true
-percent_visible = false
 [connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
 [connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]
 [connection signal="body_entered" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_entered"]

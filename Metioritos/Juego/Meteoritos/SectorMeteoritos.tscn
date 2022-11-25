@@ -97,7 +97,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ -900.472, 900.133, -540.31, 540.281 ],
 "_edit_vertical_guides_": [ -1400.33, 1400.65, -960.931, 960.369 ]
 }
-IntervaloSpawnMeteoritos = 2.0
+IntervaloSpawnMeteoritos = 2.5
 
 [node name="BordeNavePlayer" type="Node2D" parent="."]
 

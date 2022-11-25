@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=4]
+
+[node name="Nivel6" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/UI/Menus/MenuVictoria.tscn"
+tiempoLimite = 210
+
+[node name="SectorDePeligro" parent="TrigguerEnemigos" index="0" instance=ExtResource( 3 )]
+position = Vector2( 5886.35, 1481.67 )
+tipoPeligro = "Enemigo"
+numeroPeligros = 1
+
+[node name="SectorDePeligro2" parent="TrigguerEnemigos" index="1" instance=ExtResource( 3 )]
+position = Vector2( 3705.12, -673.135 )
+tipoPeligro = "Enemigo"
+numeroPeligros = 3
+
+[node name="SectorDePeligro3" parent="TrigguerEnemigos" index="2" instance=ExtResource( 3 )]
+position = Vector2( -40.3171, 1310.32 )
+tipoPeligro = "Enemigo"
+numeroPeligros = 3
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 4 )]
+position = Vector2( 6733.02, 1642.94 )
+cantidadEnergia = 25.0
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 2 )]
+position = Vector2( -1720.87, 1452.27 )
+hitpoints = 10.0
+intervaloSpawn = 1.0
+
+[node name="BaseEnemiga4" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 2 )]
+position = Vector2( 4639.21, -1894.08 )
+hitpoints = 40.0
+numeroOrbitales = 3
+intervaloSpawn = 1.5
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="2" instance=ExtResource( 2 )]
+position = Vector2( 9265.64, 3337.11 )
+hitpoints = 15.0
+numeroOrbitales = 5
+intervaloSpawn = 1.7
+
+[node name="BaseEnemiga3" parent="ContenedorBasesEnemigas" index="3" instance=ExtResource( 2 )]
+position = Vector2( 9890.56, 1815.12 )
+hitpoints = 20.0
+intervaloSpawn = 2.0
+
+[node name="Player" parent="." index="11"]
+position = Vector2( 1925.1, 1078.87 )
+
+[editable path="HUD"]
+
+[editable path="HUD/Minimapa"]

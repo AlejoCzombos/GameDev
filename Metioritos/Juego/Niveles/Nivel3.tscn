@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Naves/Player/player_red.png" type="Texture" id=2]
+[ext_resource path="res://Juego/Meteoritos/Meteorito.png" type="Texture" id=3]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/UI/HUD/PanelTutorial.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=7]
+
+[node name="Nivel3" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel4.tscn"
+tiempoLimite = 100
+
+[node name="SectorDePeligro3" parent="TrigguerLluviaMeteoritos" index="0" instance=ExtResource( 4 )]
+position = Vector2( 3995.03, 1007.91 )
+tipoPeligro = "Meteorito"
+numeroPeligros = 3
+
+[node name="SectorDePeligro2" parent="TrigguerLluviaMeteoritos" index="1" instance=ExtResource( 4 )]
+position = Vector2( 1925.18, 2316.9 )
+tipoPeligro = "Meteorito"
+numeroPeligros = 3
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 7 )]
+position = Vector2( 5744.92, 3288.54 )
+cantidadEnergia = 20.0
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 5 )]
+position = Vector2( 6561.81, 989.18 )
+hitpoints = 20.0
+numeroOrbitales = 5
+intervaloSpawn = 3.0
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 5 )]
+position = Vector2( 1847.73, 4294.36 )
+hitpoints = 25.0
+intervaloSpawn = 4.0
+
+[node name="Player" parent="." index="11"]
+position = Vector2( 1923.78, 1074.17 )
+
+[node name="PanelTutorial" parent="." index="13" instance=ExtResource( 6 )]
+margin_left = 1630.0
+margin_top = 553.0
+margin_right = 2210.0
+margin_bottom = 916.0
+
+[node name="Label" parent="PanelTutorial" index="0"]
+margin_bottom = -219.0
+text = "Ten cuidado con la lluvia de metrioritos!!"
+
+[node name="player_red" type="Sprite" parent="PanelTutorial" index="1"]
+position = Vector2( 288.88, 249.197 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Meteorito" type="Sprite" parent="PanelTutorial" index="2"]
+position = Vector2( 134.946, 247.841 )
+texture = ExtResource( 3 )
+
+[node name="Meteorito2" type="Sprite" parent="PanelTutorial" index="3"]
+position = Vector2( 400.946, 280.841 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="Meteorito3" type="Sprite" parent="PanelTutorial" index="4"]
+position = Vector2( 257.946, 167.841 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+
+[node name="Meteorito4" type="Sprite" parent="PanelTutorial" index="5"]
+position = Vector2( 452.946, 159.841 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[editable path="HUD"]
+
+[editable path="HUD/Minimapa"]
+
+[editable path="PanelTutorial"]

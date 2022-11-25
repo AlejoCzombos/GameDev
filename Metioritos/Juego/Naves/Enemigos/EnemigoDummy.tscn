@@ -1,13 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://TemporalAssets/spaceshooter/PNG/playerShip2_green.png" type="Texture" id=1]
+[ext_resource path="res://Juego/Naves/playerShip3_green.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Enemigos/EnemigoDummy.gd" type="Script" id=2]
 [ext_resource path="res://Juego/Naves/Enemigos/Area2D.gd" type="Script" id=3]
 [ext_resource path="res://Juego/Proyectiles/ProyectilEnemigo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Proyectiles/Canion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/UI/BarraSalud.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 39.3219
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.25098, 0.8, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0.317647, 0.278431, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.443137, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
 
 [node name="EnemigoDummy" type="Node2D"]
 script = ExtResource( 2 )
@@ -27,13 +46,19 @@ shape = SubResource( 1 )
 [node name="Canion" parent="." instance=ExtResource( 5 )]
 proyectil = ExtResource( 4 )
 cadenciaDisparo = 1.0
-danioProyectil = 3
 
 [node name="PuntoDerecho" parent="Canion" index="2"]
 position = Vector2( 0, 30 )
 
 [node name="PuntoIzquierdo" parent="Canion" index="3"]
 position = Vector2( 0, -30 )
+
+[node name="BarraSalud" parent="." instance=ExtResource( 6 )]
+margin_top = 47.0649
+margin_right = 13.0
+margin_bottom = 67.0649
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 [editable path="Canion"]

@@ -2,6 +2,7 @@ extends Node
 
 signal disparo(proyectil)
 signal naveDestruida(nave, posicion, explosiones)
+signal enemigoDestruido(nave, posicion)
 signal naveEnSectorPeligro(centroCamara, tipoPeligro, numeroPeligros)
 signal baseDestruida(base,posicion)
 
@@ -12,6 +13,7 @@ signal spawnOrbital(orbital)
 
 signal nivelIniciado()
 signal nivelTerminado()
+signal nivelCompletado()
 signal detectoZonaRecarga(deteccion)
 
 #HUD

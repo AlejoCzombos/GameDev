@@ -21,18 +21,19 @@ func modificarTexto(texto:String) -> void:
 func mostrar() -> void:
 	if estaActivo:
 		$AnimationPlayer.play("Mostar")
-	
+
 func ocultar() -> void:
 	if not estaActivo:
-		$AnimationPlayer.play("Ocultar")
-	
+		animaciones.stop()
+	$AnimationPlayer.play("Ocultar")
+
 func mostrarSuavizado() -> void:
 	if not estaActivo:
 		return
 	$AnimationPlayer.play("mostarSuavizado")
 	if autoOcultar:
 		autoOcultarTimer.start()
-	
+
 func ocultarSuavizado() -> void:
 	if estaActivo:
 		$AnimationPlayer.play("ocultarSuavizado")

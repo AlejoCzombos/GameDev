@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/Rele/laserBlue11.png" type="Texture" id=2]
+[ext_resource path="res://Juego/Estaciones/AssetsBaseEnemiga/spaceStation_024.png" type="Texture" id=3]
+[ext_resource path="res://Juego/Estaciones/AssetsBaseEnemiga/spaceStation_029.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Estaciones/AssetsBaseEnemiga/spaceStation_015.png" type="Texture" id=5]
+[ext_resource path="res://Juego/Estaciones/AssetsBaseEnemiga/spaceStation_028.png" type="Texture" id=6]
+[ext_resource path="res://Juego/Estaciones/AssetsBaseEnemiga/spaceStation_027.png" type="Texture" id=7]
+[ext_resource path="res://Juego/UI/HUD/PanelTutorial.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/UI/Flecha.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juego/Naves/Enemigos/Interceptor/EnemigoInterceptor.png" type="Texture" id=12]
+[ext_resource path="res://Juego/UI/50-18-22-205021.png" type="Texture" id=13]
+
+[node name="Nivel2" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel3.tscn"
+tiempoLimite = 90
+
+[node name="ColorRect" parent="HUD/FadeCanvas" index="0"]
+margin_top = -8.07248
+margin_bottom = -8.07251
+
+[node name="50-18-22-205021" type="Sprite" parent="HUD/FadeCanvas/ColorRect" index="0"]
+position = Vector2( 1203.04, 701.741 )
+texture = ExtResource( 13 )
+
+[node name="SectorDePeligro" parent="TrigguerEnemigos" index="0" instance=ExtResource( 11 )]
+position = Vector2( 4516.72, 713.879 )
+tipoPeligro = "Enemigo"
+numeroPeligros = 1
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 9 )]
+position = Vector2( 7759.32, 538.894 )
+hitpoints = 20.0
+numeroOrbitales = 2
+
+[node name="Player" parent="." index="11"]
+position = Vector2( 773.086, 723.613 )
+
+[node name="PanelTutorial" parent="." index="13" instance=ExtResource( 8 )]
+margin_left = 523.117
+margin_top = 186.184
+margin_right = 1028.12
+margin_bottom = 580.184
+
+[node name="Label" parent="PanelTutorial" index="0"]
+margin_left = 13.0
+margin_top = 20.0
+margin_right = -15.0
+margin_bottom = -268.0
+text = "Rompe todos las bases enemigas para
+hacer aparecer el portal"
+
+[node name="Sprites" type="Node2D" parent="PanelTutorial" index="1"]
+position = Vector2( 244.697, 227.86 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="PanelTutorial/Sprites" index="0"]
+position = Vector2( -3.5676, 97.515 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="PanelTutorial/Sprites" index="1"]
+position = Vector2( 0.432404, -115.485 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="PanelTutorial/Sprites" index="2"]
+position = Vector2( 0.432404, -158.485 )
+texture = ExtResource( 6 )
+
+[node name="Sprite5" type="Sprite" parent="PanelTutorial/Sprites" index="3"]
+position = Vector2( 112.432, 58.515 )
+rotation = 1.5708
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 5 )
+
+[node name="Sprite6" type="Sprite" parent="PanelTutorial/Sprites" index="4"]
+position = Vector2( 112.432, 109.515 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="laserBlue11" type="Sprite" parent="PanelTutorial" index="2"]
+modulate = Color( 0.686275, 0.0235294, 0.0235294, 0.411765 )
+position = Vector2( 245.817, 251.778 )
+scale = Vector2( 4.92117, 4.92117 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="14" instance=ExtResource( 10 )]
+position = Vector2( 2288.54, 380.412 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="PanelTutorial2" parent="." index="15" instance=ExtResource( 8 )]
+margin_left = 2946.0
+margin_top = 250.0
+margin_right = 3466.0
+margin_bottom = 565.0
+
+[node name="Label" parent="PanelTutorial2" index="0"]
+margin_top = 17.0
+margin_bottom = -187.0
+text = "Cuidado con los enemigos
+interceptores, pueden aparecer en cualquier momento!!!"
+
+[node name="EnemigoInterceptor" type="Sprite" parent="PanelTutorial2/Label" index="0"]
+position = Vector2( 246.442, 214.375 )
+scale = Vector2( 0.62872, 0.62872 )
+texture = ExtResource( 12 )
+
+[node name="PanelTutorial3" parent="." index="16" instance=ExtResource( 8 )]
+margin_left = 1045.0
+margin_top = 191.502
+margin_right = 1530.0
+margin_bottom = 574.502
+
+[node name="Label" parent="PanelTutorial3" index="0"]
+text = "Puedes localizarlo desde el minimapa en la parte de abajo!"
+
+[node name="50-18-22-205021" type="Sprite" parent="PanelTutorial3" index="1"]
+position = Vector2( 241.281, 266.3 )
+scale = Vector2( 1.45997, 1.45997 )
+texture = ExtResource( 13 )
+
+[editable path="HUD"]
+
+[editable path="HUD/Minimapa"]
+
+[editable path="PanelTutorial"]
+
+[editable path="PanelTutorial2"]
+
+[editable path="PanelTutorial3"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Juego/UI/flecha-derecha.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "indicar"
+length = 0.8
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 2.14355, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 150, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Sprite" type="Sprite"]
+scale = Vector2( 1.06931, 1.06931 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "indicar"
+anims/indicar = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 1.6, 0, 1 )
+position = Vector2( 0.735823, 0 )
+texture = ExtResource( 1 )

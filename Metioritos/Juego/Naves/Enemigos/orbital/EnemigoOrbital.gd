@@ -12,7 +12,6 @@ var pathFollow:PathFollow2D
 
 func _ready() -> void:
 	Eventos.connect("baseDestruida", self, "_on_baseDestruida")
-	#temporal
 	canion.set_estaDisparando(true)
 
 func _process(delta:float) -> void:

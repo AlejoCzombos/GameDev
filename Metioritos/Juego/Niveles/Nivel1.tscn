@@ -1,0 +1,353 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/UI/HUD/PanelTutorial.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/UI/left-click.png" type="Texture" id=3]
+[ext_resource path="res://Juego/UI/scroll.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Naves/Player/player_red.png" type="Texture" id=5]
+[ext_resource path="res://Juego/Proyectiles/proyectilPlayer.png" type="Texture" id=6]
+[ext_resource path="res://Juego/UI/right-click.png" type="Texture" id=7]
+[ext_resource path="res://Juego/UI/correcto.png" type="Texture" id=8]
+[ext_resource path="res://Juego/UI/S.png" type="Texture" id=9]
+[ext_resource path="res://Juego/UI/A.png" type="Texture" id=10]
+[ext_resource path="res://Juego/UI/D.png" type="Texture" id=11]
+[ext_resource path="res://Juego/UI/W.png" type="Texture" id=12]
+[ext_resource path="res://Juego/UI/click.png" type="Texture" id=13]
+[ext_resource path="res://Juego/Naves/Player/Escudo/shield3.png" type="Texture" id=14]
+[ext_resource path="res://Juego/UI/Flecha.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Juego/Naves/Enemigos/EnemigoDummy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Juego/UI/keyboard-key-e.png" type="Texture" id=18]
+[ext_resource path="res://Juego/UI/letter-r-key-on-keyboard.png" type="Texture" id=19]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.png" type="Texture" id=20]
+[ext_resource path="res://Juego/Estaciones/Rele/ReleDeMasa.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Juego/Estaciones/aureola.tscn" type="PackedScene" id=23]
+
+[node name="Nivel1" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel2.tscn"
+
+[node name="ColorRect" parent="HUD/FadeCanvas" index="0"]
+margin_left = 3.61719
+margin_top = -12.931
+margin_right = 3.61719
+margin_bottom = -12.931
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 22 )]
+position = Vector2( 9593.54, 2012.5 )
+
+[node name="Player" parent="." index="11"]
+position = Vector2( 1162.53, 1613.84 )
+
+[node name="TutorialDisparos" parent="." index="12" instance=ExtResource( 2 )]
+margin_left = 2375.63
+margin_top = 1176.17
+margin_right = 2976.63
+margin_bottom = 1480.17
+rect_scale = Vector2( 1.00139, 1 )
+
+[node name="Label" parent="TutorialDisparos" index="0"]
+margin_left = 15.2599
+margin_right = -12.7401
+text = "Puedes disparar pulsando el
+click primario"
+
+[node name="player_red" type="Sprite" parent="TutorialDisparos" index="1"]
+position = Vector2( 356.592, 184.292 )
+rotation = 1.5708
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="scroll" type="Sprite" parent="TutorialDisparos" index="2"]
+position = Vector2( 257.496, 180.938 )
+rotation = -3.14159
+scale = Vector2( 0.140976, 0.140976 )
+texture = ExtResource( 4 )
+
+[node name="left-click" type="Sprite" parent="TutorialDisparos" index="3"]
+position = Vector2( 125.912, 179.515 )
+scale = Vector2( 0.234888, 0.234888 )
+texture = ExtResource( 3 )
+
+[node name="proyectilPlayer" type="Sprite" parent="TutorialDisparos" index="4"]
+position = Vector2( 408.031, 153.863 )
+rotation = 1.5708
+texture = ExtResource( 6 )
+
+[node name="proyectilPlayer2" type="Sprite" parent="TutorialDisparos" index="5"]
+position = Vector2( 408.031, 215.449 )
+rotation = 1.5708
+texture = ExtResource( 6 )
+
+[node name="proyectilPlayer3" type="Sprite" parent="TutorialDisparos" index="6"]
+position = Vector2( 508.031, 153.863 )
+rotation = 1.5708
+texture = ExtResource( 6 )
+
+[node name="proyectilPlayer4" type="Sprite" parent="TutorialDisparos" index="7"]
+position = Vector2( 508.031, 215.449 )
+rotation = 1.5708
+texture = ExtResource( 6 )
+
+[node name="TutorialMovimiento" parent="." index="13" instance=ExtResource( 2 )]
+margin_left = 913.492
+margin_top = 1175.85
+margin_right = 1382.49
+margin_bottom = 1482.85
+rect_scale = Vector2( 1.00139, 1 )
+
+[node name="Label" parent="TutorialMovimiento" index="0"]
+margin_left = 15.0
+margin_right = -13.0
+margin_bottom = -315.0
+text = "Puedes moverte con:"
+
+[node name="player_red" type="Sprite" parent="TutorialMovimiento" index="1"]
+position = Vector2( 236.602, 168.864 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="S" type="Sprite" parent="TutorialMovimiento" index="2"]
+position = Vector2( 236.873, 220.422 )
+scale = Vector2( 0.16689, 0.16689 )
+texture = ExtResource( 9 )
+
+[node name="scroll2" type="Sprite" parent="TutorialMovimiento" index="3"]
+position = Vector2( 235.96, 260.073 )
+rotation = -1.5708
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 4 )
+
+[node name="scroll3" type="Sprite" parent="TutorialMovimiento" index="4"]
+position = Vector2( 235.933, 81.5249 )
+rotation = 1.5708
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 4 )
+
+[node name="correcto2" type="Sprite" parent="TutorialMovimiento" index="5"]
+position = Vector2( 330.713, 175.857 )
+rotation = 0.786092
+scale = Vector2( 0.0599584, 0.0599584 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="correcto3" type="Sprite" parent="TutorialMovimiento" index="6"]
+position = Vector2( 143.855, 176.75 )
+rotation = 0.786092
+scale = Vector2( 0.0599584, 0.0599584 )
+texture = ExtResource( 8 )
+flip_v = true
+
+[node name="A" type="Sprite" parent="TutorialMovimiento" index="7"]
+position = Vector2( 172.014, 176.559 )
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 10 )
+
+[node name="D" type="Sprite" parent="TutorialMovimiento" index="8"]
+position = Vector2( 300.348, 175.865 )
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 11 )
+
+[node name="W" type="Sprite" parent="TutorialMovimiento" index="9"]
+position = Vector2( 236.02, 112.233 )
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 12 )
+
+[node name="TutorialLaser" parent="." index="14" instance=ExtResource( 2 )]
+margin_left = 3943.96
+margin_top = 1177.64
+margin_right = 4544.96
+margin_bottom = 1481.64
+
+[node name="Label" parent="TutorialLaser" index="0"]
+margin_left = 15.2599
+margin_right = -12.7401
+text = "Puedes disparar un laser 
+manteniendo el click secundario"
+
+[node name="FillLine2D" type="Line2D" parent="TutorialLaser" index="1"]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( 381.749, 183.979 )
+scale = Vector2( 1.89254, -0.985427 )
+points = PoolVector2Array( 0, 0, 100, 0 )
+default_color = Color( 0.301961, 0.65098, 1, 1 )
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 8.0
+antialiased = true
+
+[node name="player_red" type="Sprite" parent="TutorialLaser" index="2"]
+position = Vector2( 356.592, 184.292 )
+rotation = 1.5708
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="scroll" type="Sprite" parent="TutorialLaser" index="3"]
+position = Vector2( 257.496, 180.938 )
+rotation = -3.14159
+scale = Vector2( 0.140976, 0.140976 )
+texture = ExtResource( 4 )
+
+[node name="right-click" type="Sprite" parent="TutorialLaser" index="4"]
+position = Vector2( 133.386, 178.083 )
+scale = Vector2( 0.234888, 0.234888 )
+texture = ExtResource( 7 )
+
+[node name="TutorialLaser2" parent="." index="15" instance=ExtResource( 2 )]
+margin_left = 5670.99
+margin_top = 1181.18
+margin_right = 6180.99
+margin_bottom = 1471.18
+
+[node name="Label" parent="TutorialLaser2" index="0"]
+margin_left = 15.2599
+margin_right = -12.7401
+text = "Puedes cubrirte de las balas con:"
+
+[node name="player_red" type="Sprite" parent="TutorialLaser2" index="1"]
+position = Vector2( 386.796, 176.741 )
+rotation = 1.5708
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="scroll" type="Sprite" parent="TutorialLaser2" index="2"]
+position = Vector2( 257.496, 180.938 )
+rotation = -3.14159
+scale = Vector2( 0.140976, 0.140976 )
+texture = ExtResource( 4 )
+
+[node name="click" type="Sprite" parent="TutorialLaser2" index="3"]
+position = Vector2( 125.197, 181.877 )
+scale = Vector2( 0.22567, 0.22567 )
+texture = ExtResource( 13 )
+
+[node name="SpriteCompleto" type="Sprite" parent="TutorialLaser2" index="4"]
+modulate = Color( 1.73, 4.07, 0.58, 1 )
+position = Vector2( 381.882, 177.168 )
+rotation = 1.5708
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 14 )
+
+[node name="TutorialLaser4" parent="." index="16" instance=ExtResource( 2 )]
+anchor_top = -0.000925926
+anchor_bottom = -0.000925926
+margin_left = 9338.13
+margin_top = 1179.27
+margin_right = 9848.13
+margin_bottom = 1469.27
+
+[node name="Label" parent="TutorialLaser4" index="0"]
+margin_left = 15.2599
+margin_top = 17.4126
+margin_right = -12.7401
+margin_bottom = -203.587
+text = "puedes recargar tu energia
+con las teclas:                        en:"
+
+[node name="scroll" type="Sprite" parent="TutorialLaser4" index="1"]
+position = Vector2( 255.711, 166.685 )
+rotation = -3.14159
+scale = Vector2( 0.140976, 0.140976 )
+texture = ExtResource( 4 )
+
+[node name="keyboard-key-e" type="Sprite" parent="TutorialLaser4" index="2"]
+position = Vector2( 56.1924, 168.974 )
+scale = Vector2( 0.130911, 0.130911 )
+texture = ExtResource( 18 )
+
+[node name="letter-r-key-on-keyboard" type="Sprite" parent="TutorialLaser4/keyboard-key-e" index="0"]
+position = Vector2( 779.609, -1.47656 )
+texture = ExtResource( 19 )
+
+[node name="EstacionRecarga" type="Sprite" parent="TutorialLaser4" index="3"]
+position = Vector2( 388.015, 181.81 )
+scale = Vector2( 0.511628, 0.511628 )
+texture = ExtResource( 20 )
+
+[node name="ZonaRecarga" parent="TutorialLaser4" index="4" instance=ExtResource( 23 )]
+position = Vector2( 385.089, 181.696 )
+scale = Vector2( 9.36801, 9.36801 )
+
+[node name="TutorialLaser5" parent="." index="17" instance=ExtResource( 2 )]
+anchor_top = -0.000925926
+anchor_bottom = -0.000925926
+margin_left = 11228.0
+margin_top = 1267.0
+margin_right = 11738.0
+margin_bottom = 1369.0
+
+[node name="Label" parent="TutorialLaser5" index="0"]
+margin_left = 15.2599
+margin_top = 17.4126
+margin_right = -12.7401
+margin_bottom = -203.587
+text = "Atraviesa el portal para
+ir al siguiente nivel"
+
+[node name="TutorialLaser3" parent="." index="18" instance=ExtResource( 2 )]
+margin_left = 7466.22
+margin_top = 1240.08
+margin_right = 7866.22
+margin_bottom = 1421.08
+
+[node name="Label" parent="TutorialLaser3" index="0"]
+margin_left = 15.2599
+margin_top = 16.6216
+margin_right = -12.7401
+margin_bottom = -42.3784
+text = "Puedes probar tus poderes con este enemigo"
+
+[node name="Sprite" parent="." index="20" instance=ExtResource( 15 )]
+position = Vector2( 1864.85, 1330 )
+scale = Vector2( 0.494843, 0.494843 )
+
+[node name="Sprite2" parent="." index="21" instance=ExtResource( 15 )]
+position = Vector2( 3434.17, 1330 )
+scale = Vector2( 0.494843, 0.494843 )
+
+[node name="Sprite3" parent="." index="22" instance=ExtResource( 15 )]
+position = Vector2( 5164.64, 1330 )
+scale = Vector2( 0.494843, 0.494843 )
+
+[node name="Sprite4" parent="." index="23" instance=ExtResource( 15 )]
+position = Vector2( 6827.74, 1330 )
+scale = Vector2( 0.494843, 0.494843 )
+
+[node name="Sprite6" parent="." index="24" instance=ExtResource( 15 )]
+position = Vector2( 8602.66, 1335.04 )
+scale = Vector2( 0.494843, 0.494843 )
+
+[node name="Sprite7" parent="." index="25" instance=ExtResource( 15 )]
+position = Vector2( 10553.9, 1335.04 )
+scale = Vector2( 0.494843, 0.494843 )
+
+[node name="Sprite5" parent="." index="26" instance=ExtResource( 15 )]
+position = Vector2( 7668.74, 1488 )
+rotation = 1.5708
+scale = Vector2( 0.2, 0.2 )
+
+[node name="EnemigoDummy" parent="." index="27" instance=ExtResource( 16 )]
+position = Vector2( 7678.25, 1768.19 )
+rotation = -1.5708
+
+[node name="ReleDeMasa" parent="." index="28" instance=ExtResource( 21 )]
+position = Vector2( 11496.9, 1586.43 )
+
+[editable path="HUD"]
+
+[editable path="HUD/Minimapa"]
+
+[editable path="TutorialDisparos"]
+
+[editable path="TutorialMovimiento"]
+
+[editable path="TutorialLaser"]
+
+[editable path="TutorialLaser2"]
+
+[editable path="TutorialLaser4"]
+
+[editable path="TutorialLaser5"]
+
+[editable path="TutorialLaser3"]

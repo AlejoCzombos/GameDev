@@ -271,7 +271,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0.4, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -286,6 +286,7 @@ radius = 360.953
 script = ExtResource( 8 )
 
 [node name="Sprites" type="Node2D" parent="."]
+rotation = 6.28319
 
 [node name="Sprite2" type="Sprite" parent="Sprites"]
 modulate = Color( 0.564706, 0.717647, 0.988235, 1 )
@@ -337,7 +338,7 @@ bus = "SFX"
 
 [node name="SpawnSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = -7.866
+volume_db = 0.874
 pitch_scale = 0.73
 bus = "SFX"
 

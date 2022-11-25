@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=4]
+
+[node name="Nivel4" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel5.tscn"
+tiempoLimite = 120
+
+[node name="SectorDePeligro" parent="TrigguerLluviaMeteoritos" index="0" instance=ExtResource( 4 )]
+position = Vector2( 2123.14, 2104.35 )
+tipoPeligro = "Meteorito"
+numeroPeligros = 4
+
+[node name="SectorDePeligro2" parent="TrigguerLluviaMeteoritos" index="1" instance=ExtResource( 4 )]
+position = Vector2( 3184.45, 2879.58 )
+tipoPeligro = "Meteorito"
+numeroPeligros = 4
+
+[node name="SectorDePeligro" parent="TrigguerEnemigos" index="0" instance=ExtResource( 4 )]
+position = Vector2( 1409.68, 584.898 )
+tipoPeligro = "Enemigo"
+numeroPeligros = 2
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 2 )]
+position = Vector2( 3461.28, 788.382 )
+cantidadEnergia = 20.0
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 3 )]
+position = Vector2( -806.45, -130.936 )
+intervaloSpawn = 3.0
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 3 )]
+position = Vector2( 867.481, 3331.8 )
+numeroOrbitales = 4
+intervaloSpawn = 1.5
+
+[node name="Player" parent="." index="11"]
+position = Vector2( 5420.6, 1588.86 )
+
+[editable path="HUD"]
+
+[editable path="HUD/Minimapa"]

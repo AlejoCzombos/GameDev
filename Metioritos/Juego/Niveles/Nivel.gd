@@ -10,6 +10,7 @@ onready var camaraPlayer:Camera2D = $Player/CamaraPlayer
 onready var contenedorEnemigos:Node
 onready var actualizadorTimer:Timer = $ActualizadorTimer
 
+export var prox_nivel = ""
 export var tiempoTransicionCamara: float = 1.4
 export var tiempoLimite:int = 10
 export var explosion:PackedScene = null
@@ -47,6 +48,8 @@ func conectarSeniales() -> void:
 	Eventos.connect("destruccionMeteorito", self, "_on_destruccionMeteorito")
 	Eventos.connect("baseDestruida", self, "_on_BaseDestruida")
 	Eventos.connect("spawnOrbital", self, "_on_spawnOrbital")
+	Eventos.connect("nivelCompletado",self,"_on_nivelCompletado")
+	Eventos.connect("enemigoDestruido", self, "_on_enemigoDestruido")
 
 func crearContenedores() -> void:
 	contenedorProyectiles = Node.new()
@@ -132,6 +135,9 @@ func _on_crearMeteorito(posicionSpawn:Vector2, direccionMeteorito: Vector2, tama
 	new_meteorito.crear(posicionSpawn, direccionMeteorito, tamanio)
 	contenedorMeteoritos.add_child(new_meteorito)
 
+func _on_enemigoDestruido(_nave: Node, posicion:Vector2) -> void:
+	crearExplosion(posicion, 1, 0.5)
+
 func _on_naveDestruida(nave:Player, posicion: Vector2, num_explosiones:int) -> void:
 	if nave is Player:
 		transicionCamara(posicion, posicion + crearPosicionAleatorea(-200.0, 200.0), camaraNivel, tiempoTransicionCamara)
@@ -189,6 +195,9 @@ func _on_ReiniciarNivel_timeout():
 	yield(get_tree().create_timer(1.0),"timeout")
 	get_tree().reload_current_scene()
 
+func _on_nivelCompletado() -> void:
+	yield(get_tree().create_timer(0.1),"timeout")
+	get_tree().change_scene(prox_nivel)
 
 func _on_ActualizadorTimer_timeout():
 	tiempoLimite -= 1

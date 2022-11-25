@@ -63,11 +63,11 @@ border_width_bottom = 1
 border_color = Color( 0, 0, 0, 1 )
 border_blend = true
 
-[sub_resource type="DynamicFontData" id=6]
+[sub_resource type="DynamicFontData" id=7]
 font_path = "res://Juego/UI/Kenney Future Narrow.ttf"
 
-[sub_resource type="DynamicFont" id=7]
-font_data = SubResource( 6 )
+[sub_resource type="DynamicFont" id=6]
+font_data = SubResource( 7 )
 
 [node name="EstacionRecarga" type="Node2D" groups=[
 "Minimapa",
@@ -108,6 +108,7 @@ pitch_scale = 0.86
 bus = "SFX"
 
 [node name="ZonaRecarga" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -0.667419 )
 
 [node name="BarraSalud" parent="." instance=ExtResource( 8 )]
 margin_left = -74.3471
@@ -117,7 +118,7 @@ margin_bottom = -162.513
 rect_rotation = 0.0
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 percent_visible = true
 siempreVisible = true
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]

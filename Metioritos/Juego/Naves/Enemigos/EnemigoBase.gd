@@ -30,4 +30,4 @@ func rotarHaciaPlayer():
 		rotation = dirPlayer.angle()
 
 func senialDestruccion() -> void:
-	Eventos.emit_signal("naveDestruida", self, global_position, 1)
+	Eventos.emit_signal("enemigoDestruido",self, global_position)
